@@ -12,7 +12,7 @@ if (isset($_COOKIE['auth_token'])) {
         if($auth_token === $_COOKIE['auth_token']){
             session_start();
             $_SESSION['usuario'] = $array['id'];
-            header("Location: https://127.0.0.1/estoque_git/");
+            header("Location: https://127.0.0.1/engedoc_rapha/");
             die();
         }
     }
@@ -85,7 +85,7 @@ if (isset($_COOKIE['auth_token'])) {
                     })
                 }
                 else if(resposta.erro == false) {
-                    window.location.href = "http://127.0.0.1/estoque_git/"
+                    window.location.href = "http://127.0.0.1/engedoc_rapha/"
                 }
             }
         })

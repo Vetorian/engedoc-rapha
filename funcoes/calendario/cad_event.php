@@ -72,7 +72,7 @@ function curlEmail($produto, $data){
         'user' => $configuradores
     );
     // print_r( $post);
-    $url =  "https://engedoc.com.br/calendario/funcoes/email_instalacao.php";
+    $url =  "192.168.0.122/engedoc_rapha/funcoes/calendario/email_instalacao.php";
 
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -126,7 +126,7 @@ function rotinaRastreador($produto){
                     );
         }
 
-        $url = "http:///localhost/calendario/funcoes/email_falta_rastreador.php";
+        $url = "192.168.0.122/engedoc_rapha/funcoes/calendario/email_falta_rastreador.php";
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -148,13 +148,13 @@ function rotinaRastreador($produto){
 }
 
 
-include_once 'validacao.php';
-include_once 'conexao.php';
+include_once '../../get_dados.php';
+include_once '../../conexao.php';
 
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT); // substitui o $_POST[''] :))
 $json = json_encode($dados);
-file_put_contents('../logs/json.txt', $json);
-
+file_put_contents('json.txt', $json);
+$usuario = $userSession;
 
 if(isset($_POST['current_select']) && $_POST['title'] != null){
         
@@ -535,7 +535,7 @@ if(isset($_POST['current_select']) && $_POST['title'] != null){
             }
 
             if($query){
-                $sqllog = "INSERT INTO logs(log, user, event) values (
+                $sqllog = "INSERT INTO logs(mensagem, usuario, target) values (
                     'Cadastro de evento',
                     $usuario, 
                     '$titulo')";
@@ -563,7 +563,7 @@ if(isset($_POST['current_select']) && $_POST['title'] != null){
                     $email = $array['email'];
                 }
 
-                $url =  "https://engedoc.com.br/calendario/funcoes/email.php";
+                $url =  "192.168.0.122/engedoc_rapha/funcoes/calendario/email.php";
                 $ch = curl_init($url);
 
                 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); // needed to disable SSL checks for this site
@@ -580,6 +580,7 @@ if(isset($_POST['current_select']) && $_POST['title'] != null){
                 $data = "titulo=$titulo&email=$email&formato=$formato&nome=$user";
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
                 $output = curl_exec($ch);
+                echo $output;
                 curl_close($ch);
             }
         }
@@ -940,7 +941,7 @@ if(isset($_POST['current_select']) && $_POST['title'] != null){
         
         if($query){
             //log
-            $sqllog = "INSERT INTO logs(log, user, event) values (
+            $sqllog = "INSERT INTO logs(mensagem, usuario, target) values (
                 'Cadastro de evento', 
                 $usuario, '$titulo')";
             $querylog = mysqli_query($conexao, $sqllog);

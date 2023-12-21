@@ -119,7 +119,7 @@ $("#addevent").on("submit", function (event) {
     event.preventDefault();
     $.ajax({
         method: "POST",
-        url: "funcoes/cad_event.php",
+        url: "funcoes/calendario/cad_event.php",
         data: new FormData(this),
         contentType: false,
         processData: false,
@@ -178,7 +178,7 @@ $("#editevent").on("submit", function (event) {
 
     $.ajax({
         method: "POST",
-        url: "funcoes/edit_event.php",
+        url: "funcoes/calendario/edit_event.php",
         data: new FormData(this),
         contentType: false,
         processData: false,

@@ -52,7 +52,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1">Home</h2>
+                                    <h2 class="title-1">Tela inicial</h2>
                                 </div>
                             </div>
                         </div>
@@ -63,11 +63,11 @@
                                         <div class="overview__inner">
                                             <div class="overview-box clearfix">
                                                 <div class="icon">
-                                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                                    <i class="zmdi zmdi-calendar-note"></i>
                                                 </div>
                                                 <div class="text">
-                                                    <h2>Compras</h2>
-                                                    <span>lista de compras</span>
+                                                    <h2>Calendario</h2>
+                                                    <span>Compromissos e reuniões</span>
                                                 </div>
                                             </div>
                                             <div class="overview-chart">
@@ -87,8 +87,8 @@
                                                 <i class="zmdi zmdi-receipt"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>Recebimento</h2>
-                                                <span>compras recebidas</span>
+                                                <h2>Kanban</h2>
+                                                <span>Suas tarefas</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -98,7 +98,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-lg-3">
+                            <!-- <div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c3">
                                     <a href="estoque">
                                     <div class="overview__inner">
@@ -137,7 +137,7 @@
                                         </div>
                                     </a>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="row">
                             <div class="col-lg-6">

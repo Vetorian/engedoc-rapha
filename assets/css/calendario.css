@@ -30,6 +30,7 @@ template {
 }
 a {
     background-color: transparent;
+    color: black;
 }
 a:active,
 a:hover {

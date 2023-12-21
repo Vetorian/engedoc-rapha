@@ -34,12 +34,10 @@
     
 </head>
 <style>
-iframe{ 
-    /* padding: 10px; */
-    /* width:550px; */
-    height:250px;
-    border: none;
-} 
+    iframe{ 
+        height:250px;
+        border: none;
+    } 
 </style>
 
 <body class="animsition">
@@ -49,9 +47,7 @@ iframe{
         <div class="page-container">
             <?php include_once 'subtelas/header.php';?>
             <div class="main-content">
-                
                 <div class="section__content section__content--p30">
-                    
                     <div class="container-fluid">
                         <div class="row">
                             
@@ -61,17 +57,53 @@ iframe{
 
                             <div class="col-sm-3">
                                 <center><strong>PROXIMAS REUNIÕES</strong></center>
+                                <br>
                                 <iframe scrolling="yes" src="funcoes/calendario/iframe.php"></iframe>
+                                <br><br>
                                 <center><strong>SUAS TAREFAS</strong></center>
-                                <iframe scrolling="yes" src="funcoes/kanban/iframe.php?id=<?=$userSession?>"></iframe> 
-                            </div>
+                                <br>
+                                <iframe scrolling="yes" src="funcoes/kanban/iframe.php?id=<?=$userSession?>"></iframe>
+                                <br>
+                                <div class="select">
+                                    
+                                    <div class="select-interativos">
+                                        <select class="form-control" id="trocacalendario" onmousedown="if(this.options.length>8){this.size=8;}"  onchange="javascript:location.href = this.value;" onblur="this.size=0;">>
+                                            <?php
+                                            $sql = "SELECT * FROM usuario ORDER BY FIND_IN_SET(id,'".$id_get."') DESC, id asc";
+                                            $retorno = mysqli_query($conexao,$sql);
+                                            if($id_get == 'all' ){
+                                                echo '<option>Todos</option>';
+                                            }
+                                            while($array = mysqli_fetch_array($retorno, MYSQLI_ASSOC)){
+                                                if($array['nome'] != 'Tv'){
+                                                    $id = $array['id'];
+                                                    $nome = $array["nome"];
+                                                }
+                                            ?>
+                                            <option value="?id=<?=$id?>&f=<?=$formato?>"><?=$nome?></option> <?php }?>
+                                        </select>
 
-                            <div class="table-data__tool">
-                                <div class="table-data__tool-right">
-                                    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                        <i class="zmdi zmdi-plus"></i>adicionar forma de pagamento
-                                    </button>
+
+                                        <select class="form-control" style="margin-left: auto;" id="filtro-calendario" onchange="javascript:location.href = this.value;" >
+                                            <?php
+                                            echo ($formato == '0') ? '<option disabled selected>Filtre por formato</option>' : '<option disabled>Filtre por formato</option>';
+
+                                            echo ($formato == '1') ? "<option selected value='?id=$id_get&f=1'>Presencial</option>" : "<option value='?id=$id_get&f=1'>Presencial</option>";
+                                            
+                                            echo ($formato == '2') ? "<option selected value='?id=$id_get&f=2'>Remoto</option>" : "<option value='?id=$id_get&f=2'>Remoto</option> " ;
+                                            
+                                            echo ($formato == '3') ? "<option selected value='?id=$id_get&f=3'>Presencial em Campo</option>" : "<option value='?id=$id_get&f=3'>Presencial em Campo</option>" ;
+                                            
+                                            echo ($formato == '4') ? "<option selected value='?id=$id_get&f=4'>Presencial na Engeline</option>" : "<option value='?id=$id_get&f=4'>Presencial na Engeline</option>" ;
+
+                                            echo ($formato == '5') ? "<option selected value='?id=$id_get&f=5'>Compromisso Pessoal</option>" : "<option value='?id=$id_get&f=5'>Compromisso Pessoal</option>" ;
+                                            ?>
+                                        </select>
+                                        
+                                    </div>
                                 </div>
+                                <button value="calendario" onclick="javascript:location.href= this.value;" class="btn btn-warning btn-edit">Todos</button>
+                            </div>
                             </div>
                         </div>
                     </div>

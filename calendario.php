@@ -47,6 +47,15 @@
         <div class="page-container">
             <?php include_once 'subtelas/header.php';?>
             <div class="main-content">
+                <?php
+                if (isset($_SESSION['msg'])) {
+                    echo $_SESSION['msg'];
+                    unset($_SESSION['msg']);
+                }
+                if (isset($_GET['recusado'])) {
+                    echo '<div class="alert alert-success" role="alert"> Você recusou o evento!</div>';
+                }
+                ?>
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
@@ -99,7 +108,7 @@
                                             echo ($formato == '5') ? "<option selected value='?id=$id_get&f=5'>Compromisso Pessoal</option>" : "<option value='?id=$id_get&f=5'>Compromisso Pessoal</option>" ;
                                             ?>
                                         </select>
-                                        
+
                                     </div>
                                 </div>
                                 <button value="calendario" onclick="javascript:location.href= this.value;" class="btn btn-warning btn-edit">Todos</button>
@@ -390,11 +399,11 @@
 	<script src="vendor/animsition/animsition.min.js"></script>
 	<script src="js/main.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>   
-    
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/calendario.js"></script>
 </body>
 
 
@@ -409,9 +418,6 @@
             center: 'title',
             right: 'multiMonthYear,dayGridMonth,dayGridWeek,dayGridDay listWeek'
         },
-        // footerToolbar: {
-        //     left: 'listWeek'
-        // },
         locale: 'pt-br',
         buttonText: {
             today:'hoje',
@@ -427,7 +433,7 @@
         noEventsText: 'Sem compromissos',
         height: 800,
         contentHeight: 800,
-        // nowIndicator: true,        
+        nowIndicator: true, 
         navLinks: true,
         editable: true,
         dayMaxEvents: true, 
@@ -442,11 +448,8 @@
                 });
             },
         eventClick: function (info) {
-
-            console.log(info);
-
             
-            $("#apagar_evento").attr("href", "funcoes/proc_apagar_evento.php?id=" + info.event.id + "&titulo="+ info.event.title);
+            $("#apagar_evento").attr("href", "funcoes/calendario/proc_apagar_evento.php?id=" + info.event.id + "&titulo="+ info.event.title);
             info.jsEvent.preventDefault(); 
             $('#visualizar #id').text(info.event.id);
             $('#visualizar #id').val(info.event.id);
@@ -528,34 +531,6 @@
     });
 
     calendar.render();
-
-});
-
-
-</script>
-
-<script>
-
-$(document).ready(function () {
-
-    $('#current_select').multiselect({		
-        nonSelectedText: 'Selecione o convidado ',
-        allSelectedText: 'Todos selecionados',			
-    });
-    $('#edit_select').multiselect({		
-        nonSelectedText: 'Selecione o convidado ',
-        allSelectedText: 'Todos selecionados',			
-    });
-
-    $('.btn-canc-vis').on("click", function(){
-        $('.visevent').slideToggle();
-        $('.formedit').slideToggle();
-    });
-    
-    $('.btn-canc-edit').on("click", function(){
-        $('.formedit').slideToggle();
-        $('.visevent').slideToggle();
-    });
 
 });
 

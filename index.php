@@ -59,7 +59,7 @@
                         <div class="row m-t-25">
                                 <div class="col-sm-6 col-lg-3">
                                     <div class="overview-item overview-item--c2">
-                                        <a href="compras">
+                                        <a href="calendario">
                                         <div class="overview__inner">
                                             <div class="overview-box clearfix">
                                                 <div class="icon">

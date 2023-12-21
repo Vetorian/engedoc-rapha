@@ -16,36 +16,9 @@
                                 <i class="fas fa-shopping-bag"></i> Compras
                             </a>
                         </li>
-                        <li class="recebidos">
-                            <a href="recebidos">
-                                <i class="fas fa-truck"></i>Recebimento
-                            </a>
-                        </li>
-                        <li class="estoque">
-                            <a href="estoque">
-                                <i class="fas fa-box"></i> Estoque
-                            </a>
-                        </li>
-                        <li class="retirada">
-                            <a href="retirada">
-                                <i class="fas fa-sign-in-alt"></i> Retirada
-                            </a>
-                        </li>
                         <li class="categorias">
                             <a href="categorias">
                                 <i class="fas fa-folder"></i>Categorias</a>
-                        </li>
-                        <li class="fornecedores">
-                            <a href="fornecedores">
-                                <i class="fas fa-building"></i>Fornecedores</a>
-                        </li>
-                        <li class="solicitantes">
-                            <a href="solicitantes">
-                                <i class="fas fa-user"></i>Solicitantes</a>
-                        </li>
-                         <li class="pagamentos">
-                            <a href="pagamento">
-                                <i class="fas fa-dollar-sign"></i>Formas de Pagamento</a>
                         </li>
         
                         <!-- <li class="has-sub">
@@ -136,33 +109,15 @@
             var currentPath = window.location.pathname;
             var liIndex = document.getElementsByClassName('index')[0];
             var liCategorias = document.getElementsByClassName('categorias')[0];
-            var liSolicitantes = document.getElementsByClassName('solicitantes')[0];
-            var liFornecedores = document.getElementsByClassName('fornecedores')[0];
-            var liPagamentos = document.getElementsByClassName('pagamentos')[0];
             var liCompras = document.getElementsByClassName('compras')[0];
-            var liRecebidos = document.getElementsByClassName('recebidos')[0];
-            var liEstoque = document.getElementsByClassName('estoque')[0];
-            var liRetirada = document.getElementsByClassName('retirada')[0];
 
             // console.log(currentPath);
             
-            if(currentPath === '/estoque_git/index' || currentPath === '/estoque_git/index.php' || currentPath === '/estoque_git/'){
+            if(currentPath === '/engedoc_rapha/index' || currentPath === '/engedoc_rapha/index.php' || currentPath === '/engedoc_rapha/'){
                 liIndex.classList.add('active');
-            }else if(currentPath === '/estoque_git/categorias' || currentPath === '/estoque_git/categorias.php' ){
+            }else if(currentPath === '/engedoc_rapha/categorias' || currentPath === '/engedoc_rapha/categorias.php' ){
                 liCategorias.classList.add('active');
-            }else if(currentPath === '/estoque_git/solicitantes' || currentPath === '/estoque_git/solicitantes.php'){
-                liSolicitantes.classList.add('active');
-            }else if(currentPath === '/estoque_git/fornecedores' || currentPath === '/estoque_git/fornecedores.php'){
-                liFornecedores.classList.add('active');
-            }else if(currentPath === '/estoque_git/pagamento' || currentPath === '/estoque_git/pagamento.php'){
-                liPagamentos.classList.add('active');
-            }else if(currentPath === '/estoque_git/compras' || currentPath === '/estoque_git/compras.php'){
+            }else if(currentPath === '/engedoc_rapha/compras' || currentPath === '/engedoc_rapha/compras.php'){
                 liCompras.classList.add('active');
-            }else if(currentPath === '/estoque_git/recebidos' || currentPath === '/estoque_git/recebidos.php'){
-                liRecebidos.classList.add('active');
-            }else if(currentPath === '/estoque_git/estoque' || currentPath === '/estoque_git/estoque.php'){
-                liEstoque.classList.add('active');
-            }else if(currentPath === '/estoque_git/retirada' || currentPath === '/estoque_git/retirada.php'){
-                liRetirada.classList.add('active');
             }
         </script>

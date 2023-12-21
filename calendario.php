@@ -33,6 +33,14 @@
     
     
 </head>
+<style>
+iframe{ 
+    /* padding: 10px; */
+    /* width:550px; */
+    height:250px;
+    border: none;
+} 
+</style>
 
 <body class="animsition">
     <div class="page-wrapper">
@@ -51,8 +59,13 @@
                                 <div id='calendar' style="padding: 10px;"></div>
                             </div>
 
-                            <iframe scrolling="yes" src="funcoes/iframe.php"></iframe>
-                            
+                            <div class="col-sm-3">
+                                <center><strong>PROXIMAS REUNIÕES</strong></center>
+                                <iframe scrolling="yes" src="funcoes/calendario/iframe.php"></iframe>
+                                <center><strong>SUAS TAREFAS</strong></center>
+                                <iframe scrolling="yes" src="funcoes/iframe_kanban.php?id=<?=$userSession?>"></iframe> 
+                            </div>
+
                             <div class="table-data__tool">
                                 <div class="table-data__tool-right">
                                     <button class="au-btn au-btn-icon au-btn--green au-btn--small">

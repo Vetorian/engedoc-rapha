@@ -63,7 +63,7 @@ iframe{
                                 <center><strong>PROXIMAS REUNIÕES</strong></center>
                                 <iframe scrolling="yes" src="funcoes/calendario/iframe.php"></iframe>
                                 <center><strong>SUAS TAREFAS</strong></center>
-                                <iframe scrolling="yes" src="funcoes/iframe_kanban.php?id=<?=$userSession?>"></iframe> 
+                                <iframe scrolling="yes" src="funcoes/kanban/iframe.php?id=<?=$userSession?>"></iframe> 
                             </div>
 
                             <div class="table-data__tool">

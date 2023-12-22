@@ -1,1 +1,1 @@
-{"title":"sadsadsa","start":"2023-11-21","start-time":"","end":"2023-11-22","end-time":"","formato_cad":"#A020F0","produto":"ST310UC2","link":"","recorrenteTipo":"semanalmente","recorrenteSemanas":"","recorrenteMeses":"","current_select":["admin"]}
+{"title":"sadsadsa","start":"2023-12-2","start-time":"10:00","end":"2023-12-2","end-time":"13:00","formato_cad":"#A020F0","produto":"ST310UC2","link":"","recorrenteTipo":"semanalmente","recorrenteSemanas":"","recorrenteMeses":"","current_select":["admin"]}

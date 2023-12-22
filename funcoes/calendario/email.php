@@ -19,7 +19,7 @@ function saudacao(){
 }
 
 
-$conexao = mysqli_connect('localhost', 'raphael', 'v3t0r14n!', 'calendario');
+require '../../conexao.php';
 
 $nome = $_POST['nome'];
 $email = $_POST['email'];
@@ -100,9 +100,7 @@ $mail->ContentType = 'text/calendar';
 
 $mail->Subject = 'Reunião marcada: '.$title.'';
 
-$conexao = mysqli_connect('engedoc.com.br', 'engedoc', '3Ng3d0c!', 'engeline_erp');
-
-$sql = "SELECT html from email_template where tipo = 5";
+$sql = "SELECT html from email_template where tipo = 'CALENDARIO'";
 $query = mysqli_query($conexao, $sql);
 
 $array = mysqli_fetch_assoc($query);
@@ -119,7 +117,7 @@ $arr = array("%nome%" => $nome,
             "%titulo2%" =>  "Convidados: $convidados",
             "%descricao%" => 'E-mail destinado ao aviso de compromisso que você foi convidado para ás ' . date('d/m/Y', strtotime($start)) . " " .
             date('H:m', strtotime($start_time)) . " até: " . date('d/m/Y', strtotime($end)) . " ". date('H:m', strtotime($end_time))  . " formato: $formato <br> $link",
-            "%linksistema%" => 'https://engedoc.com.br/calendario/updatedb.php?id='.$id.'&nome='.$nome.'',
+            "%linksistema%" => 'http://127.0.0.1/engedoc_rapha/funcoes/calendario/updatedb.php?id='.$id.'&nome='.$nome.'',
             "%linkarquivo%" => "",
             "%saudacao%" => saudacao(),
             "%footer%" => "© 2023 - EngeDOC - Software de gestão de documentos desenvolvido por Engeline Engenharia"

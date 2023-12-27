@@ -59,7 +59,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             if(mysqli_num_rows($query) > 1){
                 retornaErro('Você não pode contestar uma tarefa que você movimentou');
             }else{
-                $sql = "INSERT INTO contestacoes(user, msg, task_id, redirecionado) values ('$usuarioSession', '$mensagem','$tarefa_id','$usuario')";
+                $sql = "INSERT INTO contestacoes(user, msg, task_id, redirecionado) values ('$userSession', '$mensagem','$tarefa_id','$usuario')";
                 $query = mysqli_query($conexao, $sql);
                 if($query){
                     if($usuario != null){
@@ -76,7 +76,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                             'msg' => 'Sua contestação foi bem sucedida!'
                         ));
 
-                        curlEmail($tarefa_id, $usuarioSession, $mensagem);
+                        curlEmail($tarefa_id, $userSession, $mensagem);
                     }else{
                         retornaErro("Ocorreu algum erro..");    
                     }

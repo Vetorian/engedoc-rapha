@@ -380,26 +380,26 @@ $(document).ready(function(){
             
             const session = await buscaDadosSession();
             let json =  JSON.parse(session);
-            var permissoesSession = json.permissoesSession;
-            var usuarioSession = json.usuarioSession;
+            var nivelSession = json.nivelSession;
+            var userSession = json.userSession;
 
-            permissoesSession = parseInt(permissoesSession);
-            usuarioSession = parseInt(usuarioSession);
+            nivelSession = parseInt(nivelSession);
+            userSession = parseInt(userSession);
 
             id = parseInt(id); 
-            // console.log(usuarioSession + typeof(usuarioSession))
-            // console.log(permissoesSession + typeof(permissoesSession))
+            // console.log(userSession + typeof(userSession))
+            // console.log(nivelSession + typeof(nivelSession))
 
-            if(usuarioSession == id){
+            if(userSession == id){
                 initKanban();
             }else{
-                if(permissoesSession == 1 && usuarioSession == id){
+                if(nivelSession == 1 && userSession == id){
                     initKanban();
-                }else if(permissoesSession == 1 && usuarioSession != id){
+                }else if(nivelSession == 1 && userSession != id){
                     initKanban();
                     alertaAdm();
                 }else{
-                    window.location.replace(`index?id=${usuarioSession}`);
+                    window.location.replace(`index?id=${userSession}`);
                 }
             }
         } else if (window.location.search.includes('cadastro') && url.get('cadastro') === 'padrao') {

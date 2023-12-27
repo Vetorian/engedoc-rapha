@@ -7,7 +7,7 @@ $json = json_decode($client_data);
 $user = $json->user_id;
 
 $sql = "SELECT tp.tarefa_id, tc.titulo, tc.ptc_num, tc.data_criada,tc.descricao_tarefa, tc.data_final, tc.prioridade as prioridade_id, 
-        (SELECT login from usuarios where id = tc.criado_por) as created_by,  
+        (SELECT login from usuario where id = tc.criado_por) as created_by,  
         (select prioridade from prioridade where id = tc.prioridade) as prioridade from tarefas_process tp
         inner join tarefas_criadas tc on tc.tarefa_id = tp.tarefa_id
             where tc.usuario_tarefa = '$user'";

@@ -380,22 +380,22 @@ $(document).ready(function(){
             
             const session = await buscaDadosSession();
             let json =  JSON.parse(session);
-            var permissoesSession = json.permissoesSession;
+            var nivelSession = json.nivelSession;
             var userSession = json.userSession;
 
-            permissoesSession = parseInt(permissoesSession);
+            nivelSession = parseInt(nivelSession);
             userSession = parseInt(userSession);
 
             id = parseInt(id); 
             // console.log(userSession + typeof(userSession))
-            // console.log(permissoesSession + typeof(permissoesSession))
+            // console.log(nivelSession + typeof(nivelSession))
 
             if(userSession == id){
                 initKanban();
             }else{
-                if(permissoesSession == 1 && userSession == id){
+                if(nivelSession == 1 && userSession == id){
                     initKanban();
-                }else if(permissoesSession == 1 && userSession != id){
+                }else if(nivelSession == 1 && userSession != id){
                     initKanban();
                     alertaAdm();
                 }else{

@@ -26,7 +26,7 @@ function buscaNomeKanban($user){
   <body>
     <?php
     if(isset($_GET['cadastro'])){
-      if($permissoesSession == 1){?>
+      if($nivelSession == 1){?>
       
       <?php
         if($_GET['cadastro'] != 'sequencial' && $_GET['cadastro'] != 'padrao'){
@@ -146,7 +146,7 @@ function buscaNomeKanban($user){
                           <dd class="col-sm-9" id="descricao"></dd>
                         </dl>
                         <?php 
-                        if($permissoesSession == 1){?>
+                        if($nivelSession == 1){?>
                           <button id="apagar_evento" class="btn btn-danger">Apagar</button><?php
                         }?>
                         

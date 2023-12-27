@@ -138,7 +138,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     if(validaJsonRef($json->task_id) != true){
                         
                         $created = buscaCriador($json->task_id);
-                        curlEmail($json->task_id, $created, $usuarioSession);
+                        curlEmail($json->task_id, $created, $userSession);
 
                         $sql = "SELECT json_ref from tarefas_criadas where tarefa_id = $json->task_id"; // query pra pegar o caminho do json
                         $query = mysqli_query($conexao, $sql);
@@ -161,7 +161,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                             //
 
                             $sql = "INSERT INTO tarefas_criadas(titulo, prioridade, ptc_num, descricao_tarefa, criado_por, usuario_tarefa, data_final, json_ref) 
-                                values ('$task_titulo', '$task_prioridade', '$task_ptc', '$task_descricao' , '$usuarioSession', '$task_usuario', '$task_data_vencimento', '$jsonRef')";
+                                values ('$task_titulo', '$task_prioridade', '$task_ptc', '$task_descricao' , '$userSession', '$task_usuario', '$task_data_vencimento', '$jsonRef')";
                             // echo $sql;
                             $query = mysqli_query($conexao, $sql);
                             if($query){
@@ -191,11 +191,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
                     }else{
                         $created = buscaCriador($json->task_id);
-                        curlEmail($json->task_id, $created, $usuarioSession);
+                        curlEmail($json->task_id, $created, $userSession);
                     }
                     
                 }
-                logDragging($usuarioSession, $json->task_id, $json->target, $json->source);
+                logDragging($userSession, $json->task_id, $json->target, $json->source);
                 retorna(false, 'sem erro');
                 die();
             }else{

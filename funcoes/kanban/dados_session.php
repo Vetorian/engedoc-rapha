@@ -4,8 +4,8 @@ require '../../get_dados.php';
 
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
     $return = array(
-        'permissoesSession' => $permissoesSession,
-        'usuarioSession' => $usuarioSession
+        'nivelSession' => $nivelSession,
+        'userSession' => $userSession
     );
     
     echo json_encode($return);
@@ -14,17 +14,17 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
 
 if(isset($_GET['id'])){
-    if($usuarioSession == $_GET['id']){?>
+    if($userSession == $_GET['id']){?>
     initKanban();
     <?php
     }else{ 
-    if($permissoesSession == 1 && $usuarioSession == $_GET['id']){?>
+    if($nivelSession == 1 && $userSession == $_GET['id']){?>
         initKanban();<?php
-    }else if($permissoesSession == 1 && $usuarioSession != $_GET['id']){?>
+    }else if($nivelSession == 1 && $userSession != $_GET['id']){?>
         initKanban();
         alertaAdm();<?php
     }else{?>
-        window.location.replace('index?id=<?=$usuarioSession?>');<?php
+        window.location.replace('index?id=<?=$userSession?>');<?php
     }
     }
 }else if(isset($_GET['cadastro']) && $_GET['cadastro'] == 'padrao'){?> 

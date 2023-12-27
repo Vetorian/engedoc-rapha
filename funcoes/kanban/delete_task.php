@@ -32,7 +32,7 @@ function validaFeito($task_id){
 }
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-    if($permissoesSession == 1){
+    if($nivelSession == 1){
         $client_data = file_get_contents("php://input");
         $json = json_decode($client_data);
         $id = $json->id;
@@ -40,7 +40,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $query = mysqli_query($conexao, $sql);
         $array = mysqli_fetch_array($query);
         
-        if($array['criado_por'] == $usuarioSession){
+        if($array['criado_por'] == $userSession){
             
             validaProcess($id);
             validaFeito($id);

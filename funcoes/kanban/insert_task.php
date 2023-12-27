@@ -81,7 +81,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
                 foreach($usuarios as $usuario){
                     $sql = "INSERT INTO tarefas_criadas(titulo, prioridade, ptc_num, descricao_tarefa, criado_por, usuario_tarefa, data_final) 
-                    values ('$titulo', '$prioridade', '$ptc', '$descricao' , '$usuarioSession', '$usuario', '$data')";
+                    values ('$titulo', '$prioridade', '$ptc', '$descricao' , '$userSession', '$usuario', '$data')";
                     $query = mysqli_query($conexao, $sql);
                     
                     if($query){
@@ -91,7 +91,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
                         if($query){
                             curlEmail($last_inserted_id);
-                            logDragging($usuarioSession, $last_inserted_id, 'tarefas_todo', 'create');
+                            logDragging($userSession, $last_inserted_id, 'tarefas_todo', 'create');
                         }else{
                             echo json_encode(array(
                                 'erro' => true,

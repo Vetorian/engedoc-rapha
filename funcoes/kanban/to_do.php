@@ -10,7 +10,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 
     $sql = "SELECT td.tarefa_id, tc.titulo, tc.ptc_num, tc.data_criada,tc.descricao_tarefa, tc.data_final, tc.prioridade as prioridade_id, 
-            (SELECT login from usuarios where id = tc.criado_por) as created_by,  
+            (SELECT login from usuario where id = tc.criado_por) as created_by,  
             (select prioridade from prioridade where id = tc.prioridade) as prioridade from tarefas_todo td
             inner join tarefas_criadas tc on tc.tarefa_id = td.tarefa_id
                 where tc.usuario_tarefa = '$user'";

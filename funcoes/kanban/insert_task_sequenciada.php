@@ -82,7 +82,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $timestamp = getdate();
             $unix =  $timestamp[0];
             $path = "json";
-            $file = "$path/user=$usuarioSession&time=$unix";
+            $file = "$path/user=$userSession&time=$unix";
 
             if(file_put_contents("$file.json", json_encode($dataJson))){ // escreve o arquivo
                 $jsonGet= file_get_contents("$file.json");
@@ -98,7 +98,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $task_data_vencimento = $tasks[0]['data_vencimento'];
 
                 $sql = "INSERT INTO tarefas_criadas(titulo, prioridade, ptc_num, descricao_tarefa, criado_por, usuario_tarefa, data_final, json_ref) 
-                    values ('$task_titulo', '$task_prioridade', '$task_ptc', '$task_descricao' , '$usuarioSession', '$task_usuario', '$task_data_vencimento', '$file.json')";
+                    values ('$task_titulo', '$task_prioridade', '$task_ptc', '$task_descricao' , '$userSession', '$task_usuario', '$task_data_vencimento', '$file.json')";
                 // echo $sql;
                 $query = mysqli_query($conexao, $sql);
                 if($query){

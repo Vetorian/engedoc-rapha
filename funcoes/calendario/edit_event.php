@@ -1,12 +1,13 @@
 <?php
 header('Content-Type: application/json');
 
-include_once 'conexao.php';
-include_once 'validacao.php';
+include_once '../../get_dados.php';
+include_once '../../conexao.php';
 
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 $json = json_encode($dados);
-file_put_contents('../logs/jsonEdit.txt', $json);
+file_put_contents('jsonEdit.txt', $json);
+// file_put_contents('../logs/jsonEdit.txt', $json);
 
 
 if(isset($_POST['edit_select']) && $_POST['title'] != null){
@@ -83,7 +84,7 @@ if(isset($_POST['edit_select']) && $_POST['title'] != null){
                 }
 
                 if($query){
-                    $sqllog = "INSERT INTO logs(log, event, user) values ('Editou o evento','$titulo' , $usuario )";
+                    $sqllog = "INSERT INTO logs(mensagem, target, usuario) values ('Editou o evento', '$titulo' , $userSession )";
                     $querylog = mysqli_query($conexao, $sqllog);
                 }
                 
@@ -101,7 +102,7 @@ if(isset($_POST['edit_select']) && $_POST['title'] != null){
                     $email = $array['email'];
                 }
 
-                $url =  "https://engedoc.com.br/calendario/funcoes/email.php";
+                $url =  "127.0.0.1/engedoc_rapha/funcoes/calendario/email.php";
                 $ch = curl_init($url);
 
                 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); // needed to disable SSL checks for this site
@@ -115,7 +116,7 @@ if(isset($_POST['edit_select']) && $_POST['title'] != null){
                 );
 
                 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-                $data = "titulo=$titulo&email=$email&formato=$formato";
+                $data = "titulo=$titulo&email=$email&formato=$formato&nome=$user";
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
                 $output = curl_exec($ch);
                 curl_close($ch);
@@ -178,7 +179,7 @@ if(isset($_POST['edit_select']) && $_POST['title'] != null){
                     $query = mysqli_query($conexao, $sql);
                 }
             if($query){
-                $sqllog = "INSERT INTO logs(log,event, user) values ('Editou o evento', '$titulo', $usuario )";
+                $sqllog = "INSERT INTO logs(mensagem, target, usuario) values ('Editou o evento', '$titulo' , $userSession )";
                 $querylog = mysqli_query($conexao, $sqllog);
             }
             if($querylog){

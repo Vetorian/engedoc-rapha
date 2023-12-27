@@ -1,13 +1,15 @@
 <?php 
-$conexao = mysqli_connect('localhost', 'raphael', 'v3t0r14n!', 'calendario');
+
 
 function update($update, $id){
-    mysqli_query(mysqli_connect('localhost', 'raphael', 'v3t0r14n!', 'calendario'), "UPDATE events SET convidados = '$update' where id = $id");
+    include_once '../../conexao.php';    
+    mysqli_query($conexao, "UPDATE events SET convidados = '$update' where id = $id");
 };
 
 function geraLog($user, $evento){
-    mysqli_query(mysqli_connect('localhost', 'raphael', 'v3t0r14n!', 'calendario'), 
-    "INSERT INTO logs(log, event, user)
+    include_once '../../conexao.php';
+    mysqli_query($conexao, 
+    "INSERT INTO logs(mensagem, target, usuario)
     values ('Recusou o evento', '$evento',$user)");
 }
 
@@ -26,4 +28,4 @@ $evento = $data['title'];
 
 update($string, $id);
 geraLog($nome, $evento);
-header("Location:https://engedoc.com.br/calendario/index?recusado=");
+header("Location:127.0.0.1/engedoc_rapha/calendario?recusado=");

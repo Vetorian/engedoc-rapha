@@ -199,7 +199,7 @@ $("#editevent").on("submit", function (event) {
             Swal.close();
             if(retorna['sucessful']){
                 Swal.fire({
-                    title: 'Evento cadastrado!',
+                    title: 'Evento editado!',
                     html: 'A página se auto-reiniciará em 5 segundos.',
                     icon: 'success',
                     didOpen: () => {

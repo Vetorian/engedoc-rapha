@@ -74,7 +74,6 @@
                                 <iframe scrolling="yes" src="funcoes/kanban/iframe.php?id=<?=$userSession?>"></iframe>
                                 <br>
                                 <div class="select">
-                                    
                                     <div class="select-interativos">
                                         <select class="form-control" id="trocacalendario" onmousedown="if(this.options.length>8){this.size=8;}"  onchange="javascript:location.href = this.value;" onblur="this.size=0;">>
                                             <?php
@@ -108,18 +107,23 @@
                                             echo ($formato == '5') ? "<option selected value='?id=$id_get&f=5'>Compromisso Pessoal</option>" : "<option value='?id=$id_get&f=5'>Compromisso Pessoal</option>" ;
                                             ?>
                                         </select>
-
+                                        <?php 
+                                        if(isset($_GET['id']) || isset($_GET['f'])){
+                                            ?>
+                                            <button value="calendario" onclick="javascript:location.href= this.value;" class="btn btn-warning btn-edit">Remover filtros</button>
+                                            <?php
+                                        }
+                                        ?>
                                     </div>
                                 </div>
-                                <button value="calendario" onclick="javascript:location.href= this.value;" class="btn btn-warning btn-edit">Todos</button>
-                            </div>
                             </div>
                         </div>
                     </div>
-                </div>  
-            </div>
+                </div>
+            </div>  
         </div>
     </div>
+</div>
 
     <div class="modal fade" id="visualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">

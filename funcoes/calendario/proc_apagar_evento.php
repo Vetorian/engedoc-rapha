@@ -10,7 +10,7 @@ $titulo = $_GET['titulo'];
 $sql = "SELECT usuario_id from events where id = $id limit 1";
 $query = mysqli_query($conexao, $sql);
 $data = mysqli_fetch_assoc($query);    
-// echo $data['usuario_id'];
+
 if($userSession === $data['usuario_id']){
 
     $sql = "DELETE FROM events where id = $id";

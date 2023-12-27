@@ -1,1 +1,1 @@
-{"title":"testedelete","start":"2023-12-29","start-time":"12:00","end":"2023-12-29","end-time":"13:00","formato_cad":"#808080","produto":"ST310UC2","link":"","recorrenteTipo":"semanalmente","recorrenteSemanas":"","recorrenteMeses":"","current_select":["admin","admin2"]}
+{"title":"sadsada","start":"2023-12-29","start-time":"11:36","end":"2023-12-29","end-time":"12:36","formato_cad":"#1A3B5C","produto":"ST340UR","link":"","recorrenteTipo":"semanalmente","recorrenteSemanas":"","recorrenteMeses":""}

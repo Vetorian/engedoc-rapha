@@ -35,14 +35,16 @@ function InsertFor2($titulo, $cor, $formato, $data_start, $start_time, $data_end
 
 function validaRastreadores($type){
 
-    $conexao = mysqli_connect('engedoc.com.br', 'raphael', 'v3t0r14n!', 'calendario');
-    $sql = "SELECT disponivel, qt from estoque where type = '$type'";
+    require '../../conexao.php';
+    $sql = "SELECT tolerancia,disponivel, qt from estoque where type = '$type'";
     
     $query = mysqli_query($conexao, $sql);
     $result = mysqli_fetch_assoc($query);
     
-    $disponivel = $result['disponivel'];
     $quantidade = $result['qt'];
+    $tolerancia = $result['tolerancia'];
+
+    $disponivel = ($tolerancia > $quantidade) ? false : true;
     
     if($disponivel == false && $quantidade != 0){
         return 0;
@@ -56,7 +58,7 @@ function validaRastreadores($type){
 
 function curlEmail($produto, $data){
 
-    $conexao = mysqli_connect('engedoc.com.br', 'raphael', 'v3t0r14n!', 'calendario');
+    require '../../conexao.php';
     
     $sql = "SELECT id from usuario where nivel IN (4, 1)";
     $query = mysqli_query($conexao, $sql);
@@ -71,13 +73,13 @@ function curlEmail($produto, $data){
         'data' => $data,
         'user' => $configuradores
     );
-    // print_r( $post);
-    $url =  "192.168.0.122/engedoc_rapha/funcoes/calendario/email_instalacao.php";
+    
+    $url =  "127.0.0.1/engedoc_rapha/funcoes/calendario/email_instalacao.php";
 
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); // needed to disable SSL checks for this site
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); // needed to disable SSL checks for this site
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); 
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); 
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
@@ -92,13 +94,14 @@ function curlEmail($produto, $data){
 
 function rotinaRastreador($produto){
 
-    $conexao = mysqli_connect('engedoc.com.br', 'raphael', 'v3t0r14n!', 'calendario');
-    $sql = "SELECT disponivel, qt from estoque where type = '$produto'"; 
+    require '../../conexao.php';
+    $sql = "SELECT disponivel, qt, tolerancia from estoque where type = '$produto'"; 
     $query = mysqli_query($conexao, $sql);
     $result = mysqli_fetch_assoc($query);
     
     $disponivel = $result['disponivel'];
     $quantidade = $result['qt'];
+    $tolerancia = $result['tolerancia'];
 
     $sql = "SELECT id from usuario where nivel IN (1, 3)";
     $query = mysqli_query($conexao, $sql);
@@ -107,6 +110,13 @@ function rotinaRastreador($produto){
     while($array = mysqli_fetch_array($query)) {
         array_push($compradores, $array['id']);                   
     }
+
+    if($quantidade < $tolerancia){
+        $disponivel = 0;
+    }else{
+        $disponivel = 1;
+    }
+    
 
     if($disponivel != 1){
 
@@ -120,13 +130,13 @@ function rotinaRastreador($produto){
         }else if($produto == 'ST310UC2'){
             $post = array(
                         'valor' => $quantidade, 
-                        'tolerancia' => 10, 
+                        'tolerancia' => 3, 
                         'rastreador' => $produto,
                         'user' => $compradores
                     );
         }
 
-        $url = "192.168.0.122/engedoc_rapha/funcoes/calendario/email_falta_rastreador.php";
+        $url = "127.0.0.1/engedoc_rapha/funcoes/calendario/email_falta_rastreador.php";
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

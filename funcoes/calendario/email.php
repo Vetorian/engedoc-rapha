@@ -90,11 +90,7 @@ $mail->SMTPOptions = array(
 );
 
 $mail->setFrom('vetorian@vetorian.com');
-// $mail->addReplyTo('vetorian@vetorian.com');
 $mail->addAddress($email);
-// $mail->addCC('william.oliveira@vetorian.com', 'Cópia');
-// $mail->addCC('eduardo.marubayashi@vetorian.com', 'Cópia');
-// $mail->addBCC('email@email.com.br', 'Cópia Oculta')
 $mail->setLanguage('pt_br', '/optional/path/to/language/directory/');
 $mail->isHTML(true);
 $mail->ContentType = 'text/calendar'; 
@@ -127,13 +123,9 @@ $arr = array("%nome%" => $nome,
 
 $mail->Body = strtr($body,$arr);
              
-// $mail->AddEmbeddedImage('img/Logo-Vetorian-Horizontal-Color.png', 'logo_png');
 $mail->AltBody = $ical_content;
 $mail->Ical = $ical_content;
 $mail->addStringAttachment($ical_content, 'ical.ics', 'base64', 'application/ics; name="ical.ics"'); //This seems to be important for Gmail
-
-// $mail->AltBody = 'Para visualizar essa mensagem acesse http://site.com.br/mail';
-// $mail->addAttachment('img/Logo-Vetorian-Horizontal-Color.png');
 
 
 if(!$mail->send()) {

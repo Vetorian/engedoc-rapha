@@ -1,15 +1,15 @@
 <?php 
-require '../vendor/autoload.php';
-require '../vendor/phpmailer/phpmailer/src/Exception.php';
-require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require '../vendor/phpmailer/phpmailer/src/SMTP.php';
+require '../../vendor/autoload.php';
+require '../../vendor/phpmailer/phpmailer/src/Exception.php';
+require '../../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require '../../vendor/phpmailer/phpmailer/src/SMTP.php';
 
 date_default_timezone_set('America/Sao_Paulo');
 use PHPMailer\PHPMailer\PHPMailer;
 
 if(getenv('REQUEST_METHOD') == 'POST') {
     
-    $conexao = mysqli_connect('engedoc.com.br', 'raphael', 'v3t0r14n!', 'calendario');
+    require '../../conexao.php';
     
 
     $client_data = file_get_contents("php://input");
@@ -48,9 +48,6 @@ if(getenv('REQUEST_METHOD') == 'POST') {
         $mail->setFrom('vetorian@vetorian.com');
         $mail->addReplyTo('vetorian@vetorian.com');
         $mail->addAddress($cc_email);
-        // $mail->addCC('william.oliveira@vetorian.com', 'Cópia');
-        // $mail->addCC('eduardo.marubayashi@vetorian.com', 'Cópia');
-        // $mail->addBCC('email@email.com.br', 'Cópia Oculta');
         $mail->setLanguage('pt_br', '/optional/path/to/language/directory/');
         $mail->isHTML(true);
         $mail->Subject = 'Estoque Vetorian';

@@ -1,18 +1,18 @@
 <?php 
-require '../vendor/autoload.php';
-require '../vendor/phpmailer/phpmailer/src/Exception.php';
-require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require '../vendor/phpmailer/phpmailer/src/SMTP.php';
+require '../../vendor/autoload.php';
+require '../../vendor/phpmailer/phpmailer/src/Exception.php';
+require '../../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require '../../vendor/phpmailer/phpmailer/src/SMTP.php';
 
 date_default_timezone_set('America/Sao_Paulo');
 use PHPMailer\PHPMailer\PHPMailer;
 
 if(getenv('REQUEST_METHOD') == 'POST') {
     
-    $conexao = mysqli_connect('engedoc.com.br', 'raphael', 'v3t0r14n!', 'calendario');
+    require '../../conexao.php';
     
     $client_data = file_get_contents("php://input");
-    file_put_contents('../logs/email_instalacao.txt', $client_data);
+    file_put_contents('email_instalacao.txt', $client_data);
     $json = json_decode($client_data);
      
     $produto = $json->produto;
@@ -53,7 +53,6 @@ if(getenv('REQUEST_METHOD') == 'POST') {
         $mail->setLanguage('pt_br', '/optional/path/to/language/directory/');
         $mail->isHTML(true);
         $mail->Subject = 'Instalação Vetorian';
-        $conexao = mysqli_connect('engedoc.com.br', 'engedoc', '3Ng3d0c!', 'calendario');
 
         $sql = "SELECT html from email_template where tipo = 'INSTALACAO_MARCADA'";
         $query = mysqli_query($conexao, $sql);

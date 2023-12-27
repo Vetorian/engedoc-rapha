@@ -27,7 +27,7 @@ $(document).ready(function(){
         if (result.isConfirmed) {
           $.ajax({
             type: 'POST',
-            url: 'src/delete_task.php',
+            url: 'funcoes/kanban/delete_task.php',
             contentType: 'application/json',
             data: JSON.stringify({id:id}),
             success: function(resposta) {
@@ -95,7 +95,7 @@ $(document).ready(function(){
     function validaJson(user){
         $.ajax({
         type: "GET",
-        url: `src/to_do.php?iduser=${user}`,
+        url: `funcoes/kanban/to_do.php?iduser=${user}`,
         contentType: "application/json",
         success: function(response) {
             // console.log(response);

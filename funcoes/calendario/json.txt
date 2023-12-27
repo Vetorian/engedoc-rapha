@@ -1,1 +1,1 @@
-{"title":"teste","start":"2023-12-28","start-time":"10:11","end":"2023-12-28","end-time":"11:20","formato_cad":"#A020F0","produto":"ST310UC2","link":"","recorrenteTipo":"semanalmente","recorrenteSemanas":"","recorrenteMeses":""}
+{"title":"testedelete","start":"2023-12-29","start-time":"12:00","end":"2023-12-29","end-time":"13:00","formato_cad":"#808080","produto":"ST310UC2","link":"","recorrenteTipo":"semanalmente","recorrenteSemanas":"","recorrenteMeses":"","current_select":["admin","admin2"]}

@@ -381,25 +381,25 @@ $(document).ready(function(){
             const session = await buscaDadosSession();
             let json =  JSON.parse(session);
             var permissoesSession = json.permissoesSession;
-            var userSession = json.userSession;
+            var usuarioSession = json.usuarioSession;
 
             permissoesSession = parseInt(permissoesSession);
-            userSession = parseInt(userSession);
+            usuarioSession = parseInt(usuarioSession);
 
             id = parseInt(id); 
-            // console.log(userSession + typeof(userSession))
+            // console.log(usuarioSession + typeof(usuarioSession))
             // console.log(permissoesSession + typeof(permissoesSession))
 
-            if(userSession == id){
+            if(usuarioSession == id){
                 initKanban();
             }else{
-                if(permissoesSession == 1 && userSession == id){
+                if(permissoesSession == 1 && usuarioSession == id){
                     initKanban();
-                }else if(permissoesSession == 1 && userSession != id){
+                }else if(permissoesSession == 1 && usuarioSession != id){
                     initKanban();
                     alertaAdm();
                 }else{
-                    window.location.replace(`index?id=${userSession}`);
+                    window.location.replace(`index?id=${usuarioSession}`);
                 }
             }
         } else if (window.location.search.includes('cadastro') && url.get('cadastro') === 'padrao') {
@@ -494,6 +494,7 @@ $(document).ready(function(){
       }
       
     }
+
 
     firstProcess();
     

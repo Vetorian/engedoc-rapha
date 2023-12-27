@@ -1,7 +1,7 @@
-<?php include 'src/validacao.php'; 
+<?php include 'get_dados.php'; 
 
 function buscaNomeKanban($user){
-  require 'src/conexao.php';
+  require 'conexao.php';
   $sql = "select nome, sobrenome from usuarios where id = $user";
   $query = mysqli_query($conexao, $sql);
   $array = mysqli_fetch_assoc($query);
@@ -66,16 +66,16 @@ function buscaNomeKanban($user){
         
         <?php  
       }else{
-        // header('Location: ?id='. $usuarioSession);
+        // header('Location: ?id='. $userSession);
       }
     }else if(isset($_GET['acompanhamento'])){
       echo '<div id="acompanhamento"></div>'; 
     }else if(!isset($_GET['id'])){
-      header('Location: ?id='. $usuarioSession);
+      header('Location: ?id='. $userSession);
     }else if(isset($_GET['id'])){
       ?>
       <?php 
-      if($_GET['id'] != $usuarioSession){
+      if($_GET['id'] != $userSession){
         echo '
         <header> 
           <h3>Visualizando o kanban de: '. buscaNomeKanban($_GET['id']).'</h3>
@@ -88,7 +88,7 @@ function buscaNomeKanban($user){
       
       <div style="display: flex;">
         <div id="myKanban"></div>
-        <iframe src="src/iframe_tasks.php?id=<?=$_GET['id']?>" style="flex: 2; width: 100%; border: none;"></iframe>
+        <!-- <iframe src="src/iframe_tasks.php?id=<?=$_GET['id']?>" style="flex: 2; width: 100%; border: none;"></iframe> -->
       </div>
       
       <div style="position: absolute; bottom: 0.8%; right:1.6%;">
@@ -97,7 +97,7 @@ function buscaNomeKanban($user){
       <div style="position: absolute; bottom: 10%; right:2%;">
         <span id="calendario"><img class="logout" src="assets/imgs/calendar.png"></img></span>
       </div>
-      <?php if($permissoesSession == 1){
+      <?php if($nivelSession == 1){
         echo '<span class="button" id="adicionar-tarefa">Adicione uma tarefa!</span>';
         
         echo '<div style="">
@@ -169,7 +169,7 @@ function buscaNomeKanban($user){
     <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-    <script src="assets/js/index.js"></script>
+    <script src="js/index.js"></script>
 
   </body>
 </html>

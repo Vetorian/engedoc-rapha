@@ -9,7 +9,6 @@ $userSession = $_SESSION["usuario"];
 $sql = "SELECT * FROM usuario WHERE id = $userSession  AND status = 1";
 $retorno = mysqli_query($conexao, $sql);
 $array = mysqli_fetch_array($retorno);
-
 $senhaSession = $array['password'];
 $emailSession = $array['email'];
 $loginSession = $array['login'];

@@ -54,7 +54,7 @@ $(document).ready(function(){
                   }
                 }).then((result) => {
                   if (result.dismiss === Swal.DismissReason.timer) {
-                      window.location.href = "http://192.168.0.122/jkanban/";
+                      window.location.href = "http://192.168.0.122/engedoc_rapha/kanban/";
                   }
                 });
               }else if(json.erro == true){
@@ -129,7 +129,7 @@ $(document).ready(function(){
             var jsonPost = {user_id: user};
             $.ajax({
                 type: "POST",
-                url: 'src/to_do.php',
+                url: 'funcoes/kanban/to_do.php',
                 data: JSON.stringify(jsonPost),
                 contentType: "application/json",
                 success: function(response) {
@@ -155,7 +155,7 @@ $(document).ready(function(){
             var jsonPost = {user_id: user};
             $.ajax({
                 type: "POST",
-                url: 'src/in_progress.php',
+                url: 'funcoes/kanban/in_progress.php',
                 data: JSON.stringify(jsonPost),
                 contentType: "application/json",
                 success: function(response) {
@@ -183,7 +183,7 @@ $(document).ready(function(){
             var jsonPost = {user_id: user};
             $.ajax({
                 type: "POST",
-                url: 'src/done.php',
+                url: 'funcoes/kanban/done.php',
                 data: JSON.stringify(jsonPost),
                 contentType: "application/json",
                 success: function(response) {
@@ -209,7 +209,7 @@ $(document).ready(function(){
         
         $.ajax({
             type: "POST",
-            url: 'src/postData.php',
+            url: 'funcoes/kanban/postData.php',
             data: JSON.stringify(json),
             contentType: "application/json",
             success: function(response) {
@@ -265,7 +265,7 @@ $(document).ready(function(){
         return new Promise(function(resolve, reject) {
             $.ajax({
                 type: "GET",
-                url: 'src/dados_session.php',
+                url: 'funcoes/kanban/dados_session.php',
                 contentType: "application/json",
                 success: function(response) {
                     // console.log(response);
@@ -279,7 +279,7 @@ $(document).ready(function(){
     function load_acompanhamento(){
         
         $.ajax({
-            url:"src/acompanhamento.php",
+            url:"funcoes/kanban/acompanhamento.php",
             method:"post",
             success:function(data){
                 $('#acompanhamento').html(data);
@@ -303,7 +303,7 @@ $(document).ready(function(){
     function load_cadastro_sequencial(query){
 
         $.ajax({
-            url:"src/cadastro_task_sequenciada.php",
+            url:"funcoes/kanban/cadastro_task_sequenciada.php",
             method:"post",
             success:function(data){
                 $('#cadastro_task_sq').html(data);
@@ -318,7 +318,7 @@ $(document).ready(function(){
         return new Promise(function(resolve, reject) {
             $.ajax({
                 type: "GET",
-                url: 'src/get_usuarios.php',
+                url: 'funcoes/kanban/get_usuarios.php',
                 contentType: "application/json",
                 success: function(response) {
                     var json = JSON.parse(response);
@@ -344,7 +344,7 @@ $(document).ready(function(){
         return new Promise(function(resolve, reject) {
             $.ajax({
                 type: "GET",
-                url: 'src/get_id.php?username=' + user,
+                url: 'funcoes/kanban/get_id.php?username=' + user,
                 contentType: "application/json",
                 success: function(response) {
                     // console.log(response);

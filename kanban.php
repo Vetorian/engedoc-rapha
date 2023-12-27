@@ -82,7 +82,7 @@ function buscaNomeKanban($user){
         </header>';
         ?>
         <div style="position: absolute; bottom: 19%; right:2%;">
-          <a href="index"><img class="logout" src="assets/imgs/home.png"></img></a>
+          <a href="index"><img class="logout" src="img/home.png"></img></a>
         </div>;
       <?php } ?>
       
@@ -92,10 +92,10 @@ function buscaNomeKanban($user){
       </div>
       
       <div style="position: absolute; bottom: 0.8%; right:1.6%;">
-        <a href="src/logout.php"><img class="logout" src="assets/imgs/logout.png"></img></a>
+        <a href="src/logout.php"><img class="logout" src="img/logout.png"></img></a>
       </div>
       <div style="position: absolute; bottom: 10%; right:2%;">
-        <span id="calendario"><img class="logout" src="assets/imgs/calendar.png"></img></span>
+        <span id="calendario"><img class="logout" src="img/calendar.png"></img></span>
       </div>
       <?php if($nivelSession == 1){
         echo '<span class="button" id="adicionar-tarefa">Adicione uma tarefa!</span>';
@@ -169,7 +169,7 @@ function buscaNomeKanban($user){
     <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-    <script src="js/index.js"></script>
+    <script src="js/kanban.js"></script>
 
   </body>
 </html>

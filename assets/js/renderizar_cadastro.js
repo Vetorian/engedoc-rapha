@@ -1,7 +1,7 @@
 function renderizarTela() {
 
     var elemento1 = document.createElement('div');
-    elemento1.className = 'col-sm-3';
+    elemento1.className = 'col-sm-5';
 
     var card1 = document.createElement('div');
     card1.className = 'card';
@@ -18,7 +18,7 @@ function renderizarTela() {
     texto1.textContent = 'Tarefa atrelada a um ou mais usuários.';
 
     var link1 = document.createElement('a');
-    link1.href = 'index?cadastro=padrao';
+    link1.href = 'kanban2?cadastro=padrao';
     link1.className = 'btn btn-primary';
     link1.textContent = 'Cadastrar';
 
@@ -30,8 +30,9 @@ function renderizarTela() {
     elemento1.appendChild(card1);
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
     var elemento2 = document.createElement('div');
-    elemento2.className = 'col-sm-3';
+    elemento2.className = 'col-sm-5';
 
     var card2 = document.createElement('div');
     card2.className = 'card';
@@ -48,7 +49,7 @@ function renderizarTela() {
     texto2.textContent = 'Tarefa step-by-step, com 1 ou mais passos, no qual o segundo depende do primeiro para iniciar.';
 
     var link2 = document.createElement('a');
-    link2.href = 'index?cadastro=sequencial';
+    link2.href = 'kanban2?cadastro=sequencial';
     link2.className = 'btn btn-primary';
     link2.textContent = 'Cadastrar';
 

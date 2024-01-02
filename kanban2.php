@@ -1,10 +1,16 @@
 <?php require_once 'get_dados.php';
 $cadastro = null;
+$padrao = null;
+$sequencial = null;
 if(isset($_GET['cadastro'])){
     if($nivelSession == 1){?>
     <?php
         if($_GET['cadastro'] != 'sequencial' && $_GET['cadastro'] != 'padrao'){
             $cadastro = true;
+        }elseif($_GET['cadastro'] == 'sequencial'){
+            $sequencial = true;
+        }elseif($_GET['cadastro'] == 'padrao'){
+            $padrao = true;
         }
     }
 }else if(!isset($_GET['id'])){
@@ -29,13 +35,18 @@ if(isset($_GET['cadastro'])){
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
 	<link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
 	<link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-	<link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+	<!-- <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all"> -->
 	<link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
     <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
 	<link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
     <link href="css/theme.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="assets/js/jkanban.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="assets/js/renderizar_cadastro.js"></script>
+    <script src="assets/js/register-task-step.js"></script> 
     
     
     
@@ -64,12 +75,29 @@ if(isset($_GET['cadastro'])){
                                 if($cadastro == true){
                                     echo '<div id="container"></div>
                                     <script>renderizarTela()</script>';
+                                }else if($padrao == true){
+                                    echo '<div id="cadastro_task_pd"></div>';
+                                }else if($sequencial == true){
+                                    echo '<div id="cadastro_task_sq"></div>';
                                 }else{
                                     echo '<div id="myKanban"></div>';
                                 }
                                 ?>
                             </div>
+
+                            <div class="col-lg-5">
+                                <?php if($nivelSession == 1 && isset($_GET['id'])){
+                                    echo '<span class="button" id="adicionar-tarefa">Adicione uma tarefa!</span>';
+                                    
+                                    echo '<div style="padding-bottom: 50px;">
+                                        <span id="filtrar-usuario" class="button">Visualizar outros KANBANS</span>
+                                    </div>';
+                                    
+                                }?>
+                            </div>
+                            
                         </div>
+                        
                         </div>
                     </div>
                 </div>  
@@ -126,13 +154,16 @@ if(isset($_GET['cadastro'])){
 
 <script src='js/index.global.js'></script>
 <!-- <script src="vendor/jquery-3.2.1.min.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
 <script src="vendor/bootstrap-4.1/popper.min.js"></script>
 <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
-<script src="vendor/select2/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- <script src="vendor/select2/select2.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="vendor/animsition/animsition.min.js"></script>
 <script src="js/main.js"></script>
 <script src="assets/js/jkanban.js"></script>
+
 <script src="js/kanban.js"></script>

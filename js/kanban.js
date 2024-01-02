@@ -37,25 +37,25 @@ $(document).ready(function(){
               if(json.erro == false){
                 let timerInterval;
                 Swal.fire({
-                  icon: 'success',
-                  title: "Sucesso!",
-                  html: "Fechando em <b></b> milisegundos...",
-                  timer: 2000,
-                  timerProgressBar: true,
-                  didOpen: () => {
-                      Swal.showLoading();
-                      const timer = Swal.getPopup().querySelector("b");
-                      timerInterval = setInterval(() => {
-                      timer.textContent = `${Swal.getTimerLeft()}`;
-                      }, 100);
-                  },
-                  willClose: () => {
-                      clearInterval(timerInterval);
-                  }
+                    icon: 'success',
+                    title: "Sucesso!",
+                    html: "Fechando em <b></b> milisegundos...",
+                    timer: 2000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading();
+                        const timer = Swal.getPopup().querySelector("b");
+                        timerInterval = setInterval(() => {
+                        timer.textContent = `${Swal.getTimerLeft()}`;
+                        }, 100);
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval);
+                    }
                 }).then((result) => {
-                  if (result.dismiss === Swal.DismissReason.timer) {
-                      window.location.href = "http://192.168.0.122/engedoc_rapha/kanban/";
-                  }
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        window.location.href = "http://127.0.0.1/engedoc_rapha/kanban2";
+                    }
                 });
               }else if(json.erro == true){
                 Swal.fire({
@@ -85,12 +85,9 @@ $(document).ready(function(){
     });
 
     $('#adicionar-tarefa').on("click", function(){
-        window.location.href = "index?cadastro";
+        window.location.href = "kanban2?cadastro";
     });
 
-    $('#tela-acompanhamento').on("click", function(){
-        window.location.href = "index?acompanhamento";
-    });
 
     function validaJson(user){
         $.ajax({
@@ -291,7 +288,7 @@ $(document).ready(function(){
     function load_cadastro(query){
 
         $.ajax({
-            url:"src/cadastro_task.php",
+            url:"funcoes/kanban/cadastro_task.php",
             method:"post",
             success:function(data){
                 $('#cadastro_task_pd').html(data);
@@ -366,7 +363,7 @@ $(document).ready(function(){
         });
         if (user) {
             get_userid(user).then(id => {
-                window.location.href = 'index?id=' + id;
+                window.location.href = 'kanban2?id=' + id;
             })
         }
     });
@@ -406,8 +403,6 @@ $(document).ready(function(){
             load_cadastro();
         } else if (window.location.search.includes('cadastro') && url.get('cadastro') === 'sequencial') {
             load_cadastro_sequencial();
-        } else if(window.location.search.includes('acompanhamento')){
-            load_acompanhamento();
         }
     }
 

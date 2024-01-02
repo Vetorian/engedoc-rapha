@@ -47,9 +47,9 @@
                 </div>
                 <div class="col-6">
                     <label for="multiple-select-field" class="control-label mb-1">Atribuir para:</label>
-                    <select class="form-select" name="usuarios" id="multiple-select-field" data-placeholder="Usuários">
+                    <select class="form-select" name="usuarios" id="multiple-select-field">
                         <?php 
-                        $sql = "SELECT * from usuarios order by nome asc"; 
+                        $sql = "SELECT * from usuario order by nome asc"; 
                         $query = mysqli_query($conexao, $sql);
 
                         while($array = mysqli_fetch_array($query)){
@@ -70,13 +70,13 @@
                         type="text" aria-required="true" aria-invalid="false" placeholder="Descrição" required>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-3">
                     <div class="form-group">
-                        <label for="data_entrega" class="control-label mb-1">Data da entrega da tarefa</label>
+                        <label for="data_entrega" class="control-label mb-1">Data entrega</label>
                         <input id="data_entrega" name="data_entrega" type="date" class="form-control" required>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-3">
                     <div class="form-group">
                         <label for="tempo_entrega" class="control-label mb-1"></label>
                         <input id="tempo_entrega" name="tempo_entrega" type="time" class="form-control">
@@ -120,27 +120,28 @@ $(document).ready(function(){
 
     function addInput(divName) {
         var hr = $('<hr>');
+
         var p = $('<p>');
-        var title = $('<h5>Step '+ formLine + '</h2>');
+        // var title = $('<h5>Step '+ formLine + '</h5>');
 
         var newdiv = $('<div>', { class: 'row' });
-
+        
         var col1 = $('<div>', { class: 'col-6' });
-        col1.append('<div class="form-group">' +
+        col1.append('</div><div class="form-group">' +
             '<label for="tarefa-' + formLine + '" class="control-label mb-1">Titulo da Tarefa</label>' +
             '<input id="tarefa-' + formLine + '" name="tarefa-' + formLine + '" class="form-control" type="text" aria-required="true" aria-invalid="false" placeholder="Tarefa" required>' +
             '</div>'
         );
 
         
-        var col2 = $('<div>', {class: 'col-2'});
+        var col2 = $('<div>', {class: 'col-3'});
         col2.append(' <div class="form-group">' +
             '<label for="data_entrega-'+ formLine + '" class="control-label mb-1">Data da entrega da tarefa</label>' +
             '<input id="data_entrega-' + formLine + '" name="data_entrega-'+ formLine + '" type="date" class="form-control" required>' +
             '</div></div>'
         )
 
-        var col2_2 = $('<div>', {class: 'col-2'});
+        var col2_2 = $('<div>', {class: 'col-3'});
         col2_2.append(' <div class="form-group">' +
             '<label for="tempo_entrega-'+ formLine + '" class="control-label mb-1"></label>' +
             '<input id="tempo_entrega-' + formLine + '" name="tempo_entrega-'+ formLine + '" type="time" class="form-control">' +
@@ -163,7 +164,7 @@ $(document).ready(function(){
        var col4 = $('<div>', { class: 'col-6' });
         col4.append('<label for="multiple-select-field' + formLine + '" class="control-label mb-1">Atribuir para:</label>' +
             '<select class="form-select" name="usuarios-' + formLine +'" id="multiple-select-field' + formLine + '" data-placeholder="Usuários">' 
-                <?php $sql = "SELECT * from usuarios order by nome asc"; 
+                <?php $sql = "SELECT * from usuario order by nome asc"; 
                 $query = mysqli_query($conexao, $sql); 
                 while($array = mysqli_fetch_array($query)){ 
                     $login = $array["login"]; 
@@ -172,7 +173,7 @@ $(document).ready(function(){
                 <?php } ?> + '</select></div>');
     
 
-        newdiv.append(hr, title,  col1, col2, col2_2, col3, col4, p);
+        newdiv.append(hr, p, col1, col2, col2_2, col3, col4);
         $('#' + divName).append(newdiv);
         formLine++;
     }

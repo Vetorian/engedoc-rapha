@@ -11,7 +11,7 @@ $(document).ready(function(){
         event.preventDefault();
         $.ajax({
             method: "POST",
-            url: "src/insert_task.php",
+            url: "funcoes/kanban/insert_task.php",
             data: new FormData(this),
             contentType: false,
             processData: false,

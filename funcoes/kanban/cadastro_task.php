@@ -46,9 +46,9 @@
                 </div>
                 <div class="col-6">
                     <label for="multiple-select-field" class="control-label mb-1">Atribuir para:</label>
-                    <select class="form-select" name="usuarios[]" id="multiple-select-field" data-placeholder="Usuários" multiple>
+                    <select class="form-select" name="usuarios[]" id="multiple-select-field" multiple>
                         <?php 
-                        $sql = "SELECT * from usuarios order by nome asc"; 
+                        $sql = "SELECT * from usuario order by nome asc"; 
                         $query = mysqli_query($conexao, $sql);
 
                         while($array = mysqli_fetch_array($query)){
@@ -69,13 +69,13 @@
                         type="text" aria-required="true" aria-invalid="false" placeholder="Descrição" required>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-3">
                     <div class="form-group">
-                        <label for="data_entrega" class="control-label mb-1">Data da entrega da tarefa</label>
+                        <label for="data_entrega" class="control-label mb-1">Data entrega</label>
                         <input id="data_entrega" name="data_entrega" type="date" class="form-control" required>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-3">
                     <div class="form-group">
                         <label for="tempo_entrega" class="control-label mb-1"></label>
                         <input id="tempo_entrega" name="tempo_entrega" type="time" class="form-control">

@@ -1,9 +1,9 @@
 <?php if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['username'])){
     
-    require 'conexao.php';
+    require '../../conexao.php';
     
     $user = $_GET['username'];
-    $sql = "SELECT id from usuarios where login = '$user'";
+    $sql = "SELECT id from usuario where login = '$user'";
     $query = mysqli_query($conexao, $sql);
 
     $array = mysqli_fetch_array($query);

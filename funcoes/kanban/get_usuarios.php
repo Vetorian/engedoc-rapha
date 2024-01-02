@@ -1,7 +1,7 @@
 <?php if($_SERVER['REQUEST_METHOD'] == 'GET'){
-    require 'conexao.php';
+    require '../../conexao.php';
 
-    $sql = "SELECT login,id, nome, sobrenome from usuarios order by nome asc";
+    $sql = "SELECT login,id, nome, sobrenome from usuario order by nome asc";
     $query = mysqli_query($conexao, $sql);
 
     $usuarios = array();

@@ -1,6 +1,7 @@
 <?php 
 
 require '../../vendor/autoload.php';
+date_default_timezone_set('America/Sao_Paulo');
 use PHPMailer\PHPMailer\PHPMailer;
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){

@@ -1,6 +1,7 @@
 <?php 
 require 'chaves.php';
 require '../../vendor/autoload.php';
+date_default_timezone_set('America/Sao_Paulo');
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;

@@ -56,6 +56,10 @@ if(isset($_GET['cadastro'])){
         height:250px;
         border: none;
     } 
+
+    a {
+        text-decoration: none;
+    }
 </style>
 
 
@@ -85,13 +89,13 @@ if(isset($_GET['cadastro'])){
                                 ?>
                             </div>
 
-                            <div class="col-lg-5">
+                            <div class="col-sm-3">
                                 <?php if($nivelSession == 1 && isset($_GET['id'])){
-                                    echo '<span class="button" id="adicionar-tarefa">Adicione uma tarefa!</span>';
-                                    
-                                    echo '<div style="padding-bottom: 50px;">
-                                        <span id="filtrar-usuario" class="button">Visualizar outros KANBANS</span>
-                                    </div>';
+                                    echo '<button class="au-btn au-btn-icon au-btn--green au-btn--small" id="adicionar-tarefa">
+                                        <i class="zmdi zmdi-plus"></i>Adicionar uma tarefa</button>';
+
+                                    echo '<button class="au-btn au-btn-icon au-btn--blue au-btn--small" id="filtrar-usuario">
+                                        <i class="zmdi zmdi-plus"></i>Visualizar outros kanbans</button>';
                                     
                                 }?>
                             </div>

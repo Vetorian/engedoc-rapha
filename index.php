@@ -139,7 +139,7 @@
                                 </div>
                             </div> -->
                         </div>
-                        <div class="row">
+                        <?php /*<div class="row">
                             <div class="col-lg-6">
                                 <div class="card">
                                     <div class="card-body">
@@ -168,7 +168,7 @@
                                     </div>
                                 </div>
                             </div> -->
-                        </div>
+                        </div>*/?>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">

@@ -5,11 +5,6 @@ body {
     padding: 0;
 }
 
-#myKanban {
-    /* overflow-x: auto; */
-    padding: 20px ;
-}
-
 .success, .info, .warning, .error {
     padding: 10px;
 }

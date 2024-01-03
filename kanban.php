@@ -97,7 +97,8 @@ if(isset($_GET['cadastro'])){
                             </div>
 
                             <div class="col-sm-3">
-                                <?php if($nivelSession == 1 && isset($_GET['id']) && $_GET['id'] === $userSession){
+                                <?php 
+                                if($nivelSession == 1 && isset($_GET['id']) && $_GET['id'] === $userSession){
                                     echo '<button class="au-btn au-btn-icon au-btn--green au-btn--small" id="adicionar-tarefa">
                                         <i class="zmdi zmdi-plus"></i>Adicionar uma tarefa</button>
                                     <button class="au-btn au-btn-icon au-btn--blue au-btn--small" id="filtrar-usuario">
@@ -107,7 +108,8 @@ if(isset($_GET['cadastro'])){
                                     <i class="zmdi zmdi-eye"></i>Visualizar outros kanbans</button>';
                                     echo '<button class="au-btn au-btn-icon au-btn--blue2 au-btn--small" id="voltar-kanban">
                                     <i class="zmdi zmdi-home"></i>Voltar para meu kanban</button>';
-                                }?>    
+                                }
+                                ?>    
                             </div>
                             
                         </div>

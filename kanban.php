@@ -1,123 +1,129 @@
-<?php include 'get_dados.php'; 
-
-function buscaNomeKanban($user){
-  require 'conexao.php';
-  $sql = "select nome, sobrenome from usuarios where id = $user";
-  $query = mysqli_query($conexao, $sql);
-  $array = mysqli_fetch_assoc($query);
-  $nomeKanban = $array['nome'] . ' ' . $array['sobrenome']; 
-  return $nomeKanban;
+<?php require_once 'get_dados.php';
+$cadastro = null;
+$padrao = null;
+$sequencial = null;
+if(isset($_GET['cadastro'])){
+    if($nivelSession == 1){?>
+    <?php
+        if($_GET['cadastro'] != 'sequencial' && $_GET['cadastro'] != 'padrao'){
+            $cadastro = true;
+        }elseif($_GET['cadastro'] == 'sequencial'){
+            $sequencial = true;
+        }elseif($_GET['cadastro'] == 'padrao'){
+            $padrao = true;
+        }
+    }
+}else if(!isset($_GET['id'])){
+    header('Location: ?id='. $userSession);
 }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
+
 <head>
-<meta charset="UTF-8" />
-<title>Kanban</title>
-<link rel="stylesheet" href="assets/js/jkanban.min.css"/>
-<link rel="stylesheet" href="assets/css/style_kanban.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
-<script src="assets/js/renderizar_cadastro.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Kanban</title>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+    <link rel="stylesheet" href="assets/css/style_kanban.css"/>
+    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+	<link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+	<link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+	<!-- <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all"> -->
+	<link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
+	<link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <link href="css/theme.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="assets/js/jkanban.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="assets/js/renderizar_cadastro.js"></script>
+    <script src="assets/js/register-task-step.js"></script> 
+    
+    
+    
 </head>
-  <body>
-    <?php
-    if(isset($_GET['cadastro'])){
-      if($nivelSession == 1){?>
-      
-      <?php
-        if($_GET['cadastro'] != 'sequencial' && $_GET['cadastro'] != 'padrao'){
-         ?><div id="container"></div>
-         <script>renderizarTela()</script>
-         <?php
-        //  if($_GET['cadastro'] != 'sequencial' && $_GET['cadastro'] != 'padrao'){
-        //   echo '
-        //   <div class="col-sm-3">
-        //     <div class="card">
-        //       <div class="card-body">
-        //         <h5 class="card-title">Tarefa padrão</h5>
-        //         <p class="card-text">Tarefa atrelada a um ou mais usuários.</p>
-        //         <a href="index?cadastro=padrao" class="btn btn-primary">Cadastrar</a>
-        //       </div>
-        //     </div>
-        //   </div>
-        //   <div class="col-sm-3">
-        //     <div class="card">
-        //       <div class="card-body">
-        //         <h5 class="card-title">Tarefa com Sequência</h5>
-        //         <p class="card-text">Tarefa step-by-step, com 1 ou mais passos, no qual o segundo depende do primeiro para iniciar.</p>
-        //         <a href="index?cadastro=sequencial" class="btn btn-primary">Cadastrar</a>
-        //       </div>
-        //     </div>
-        //   </div>
-        // ';
-        // }
-        }
+<style>
+    iframe{ 
+        height:250px;
+        border: none;
+    } 
 
-        if($_GET['cadastro'] == 'sequencial'){
-          echo '<div id="cadastro_task_sq"></div>';
-        }else if($_GET['cadastro'] == 'padrao'){
-          echo '<div id="cadastro_task_pd"></div>';
-        }
-        ?>
-        
-        <?php  
-      }else{
-        // header('Location: ?id='. $userSession);
-      }
-    }else if(isset($_GET['acompanhamento'])){
-      echo '<div id="acompanhamento"></div>'; 
-    }else if(!isset($_GET['id'])){
-      header('Location: ?id='. $userSession);
-    }else if(isset($_GET['id'])){
-      ?>
-      <?php 
-      if($_GET['id'] != $userSession){
-        echo '
-        <header> 
-          <h3>Visualizando o kanban de: '. buscaNomeKanban($_GET['id']).'</h3>
-        </header>';
-        ?>
-        <div style="position: absolute; bottom: 19%; right:2%;">
-          <a href="index"><img class="logout" src="img/home.png"></img></a>
-        </div>;
-      <?php } ?>
-      
-      <div style="display: flex;">
-        <div id="myKanban"></div>
-        <!-- <iframe src="src/iframe_tasks.php?id=<?=$_GET['id']?>" style="flex: 2; width: 100%; border: none;"></iframe> -->
-      </div>
-      
-      <div style="position: absolute; bottom: 0.8%; right:1.6%;">
-        <a href="src/logout.php"><img class="logout" src="img/logout.png"></img></a>
-      </div>
-      <div style="position: absolute; bottom: 10%; right:2%;">
-        <span id="calendario"><img class="logout" src="img/calendar.png"></img></span>
-      </div>
-      <?php if($nivelSession == 1){
-        echo '<span class="button" id="adicionar-tarefa">Adicione uma tarefa!</span>';
-        
-        echo '<div style="">
-          <span id="tela-acompanhamento" class="button">ACOMPANHAR PTCS</span>
-        </div>';
-        echo '<div style="padding-bottom: 50px;">
-          <span id="filtrar-usuario" class="button">Visualizar outros KANBANS</span>
-        </div>';
-        
-      }?>
+    a {
+        text-decoration: none;
+    }
 
-      
-      
-      
-      <div class="modal fade" id="visualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    .visevent{
+        display: block;
+    }
+    .formedit{
+        display: none;
+    }
+</style>
+
+
+
+<body class="animsition">
+    <div class="page-wrapper">
+        <?php include_once 'subtelas/header-mobile.php';?>
+        <?php include_once 'subtelas/sidebar.php';?>
+        <div class="page-container">
+            <?php include_once 'subtelas/header.php';?>
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <?php 
+                                if($cadastro == true){
+                                    echo '<div id="container"></div>
+                                    <script>renderizarTela()</script>';
+                                }else if($padrao == true){
+                                    echo '<div id="cadastro_task_pd"></div>';
+                                }else if($sequencial == true){
+                                    echo '<div id="cadastro_task_sq"></div>';
+                                }else{
+                                    echo '<div id="myKanban"></div>';
+                                }
+                                ?>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <?php if($nivelSession == 1 && isset($_GET['id']) && $_GET['id'] === $userSession){
+                                    echo '<button class="au-btn au-btn-icon au-btn--green au-btn--small" id="adicionar-tarefa">
+                                        <i class="zmdi zmdi-plus"></i>Adicionar uma tarefa</button>
+                                    <button class="au-btn au-btn-icon au-btn--blue au-btn--small" id="filtrar-usuario">
+                                        <i class="zmdi zmdi-eye"></i>Visualizar outros kanbans</button>';    
+                                }else{
+                                    echo '<button class="au-btn au-btn-icon au-btn--blue au-btn--small" id="filtrar-usuario">
+                                    <i class="zmdi zmdi-eye"></i>Visualizar outros kanbans</button>';
+                                    echo '<button class="au-btn au-btn-icon au-btn--blue2 au-btn--small" id="voltar-kanban">
+                                    <i class="zmdi zmdi-home"></i>Voltar para meu kanban</button>';
+                                }?>    
+                            </div>
+                            
+                        </div>
+                        
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="visualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Informações da Tarefa - <dd id="titulo_tarefa"></dd> </h5> 
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="visevent">
@@ -155,21 +161,22 @@ function buscaNomeKanban($user){
             </div>
         </div>
       </div>
-      <?php
-    }
-    ?>
-    
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-    <script src="assets/js/jkanban.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-    <script src="js/kanban.js"></script>
+</body>
 
-  </body>
-</html>
+
+<script src='js/index.global.js'></script>
+<!-- <script src="vendor/jquery-3.2.1.min.js"></script> -->
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+<script src="vendor/bootstrap-4.1/popper.min.js"></script>
+<script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="vendor/animsition/animsition.min.js"></script>
+<script src="js/main.js"></script>
+<script src="assets/js/jkanban.js"></script>
+
+<script src="js/kanban.js"></script>

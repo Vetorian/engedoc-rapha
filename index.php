@@ -80,7 +80,7 @@
                             
                              <div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c1">
-                                    <a href="kanban2">
+                                    <a href="kanban">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
                                             <div class="icon">

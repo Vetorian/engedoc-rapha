@@ -18,7 +18,7 @@ function renderizarTela() {
     texto1.textContent = 'Tarefa atrelada a um ou mais usuários.';
 
     var link1 = document.createElement('a');
-    link1.href = 'kanban2?cadastro=padrao';
+    link1.href = 'kanban?cadastro=padrao';
     link1.className = 'btn btn-primary';
     link1.textContent = 'Cadastrar';
 
@@ -49,7 +49,7 @@ function renderizarTela() {
     texto2.textContent = 'Tarefa step-by-step, com 1 ou mais passos, no qual o segundo depende do primeiro para iniciar.';
 
     var link2 = document.createElement('a');
-    link2.href = 'kanban2?cadastro=sequencial';
+    link2.href = 'kanban?cadastro=sequencial';
     link2.className = 'btn btn-primary';
     link2.textContent = 'Cadastrar';
 

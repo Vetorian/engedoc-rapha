@@ -54,7 +54,7 @@ $(document).ready(function(){
                     }
                 }).then((result) => {
                     if (result.dismiss === Swal.DismissReason.timer) {
-                        window.location.href = "http://127.0.0.1/engedoc_rapha/kanban2";
+                        window.location.href = "http://127.0.0.1/engedoc_rapha/kanban";
                     }
                 });
               }else if(json.erro == true){
@@ -85,7 +85,7 @@ $(document).ready(function(){
     });
 
     $('#adicionar-tarefa').on("click", function(){
-        window.location.href = "kanban2?cadastro";
+        window.location.href = "kanban?cadastro";
     });
 
 
@@ -363,9 +363,13 @@ $(document).ready(function(){
         });
         if (user) {
             get_userid(user).then(id => {
-                window.location.href = 'kanban2?id=' + id;
+                window.location.href = 'kanban?id=' + id;
             })
         }
+    });
+
+    $('#voltar-kanban').on("click", async function(){
+        window.location = 'kanban';
     });
 
 
@@ -420,11 +424,12 @@ $(document).ready(function(){
 
       var KanbanTest = new jKanban({
         element: "#myKanban",
-        gutter: "10px",
-        widthBoard: "300px",
+        // gutter: "16px",
+        // widthBoard: "400px",
         itemHandleOptions:{
             enabled: true,
         },
+        responsivePercentage: true,
         click: function(el){
           
           var data_criada = moment(el.dataset.data_criada).toDate();

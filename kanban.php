@@ -25,9 +25,6 @@ if(isset($_GET['cadastro'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Kanban</title>
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" /> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
     <link rel="stylesheet" href="assets/css/style_kanban.css"/>
@@ -38,13 +35,14 @@ if(isset($_GET['cadastro'])){
 	<!-- <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all"> -->
 	<link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
     <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
-	<link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+	<link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet" media="all">
     <link href="css/theme.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="assets/js/jkanban.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.2.1/hamburgers.min.css">
     <script src="assets/js/renderizar_cadastro.js"></script>
     <script src="assets/js/register-task-step.js"></script> 
     
@@ -103,7 +101,7 @@ if(isset($_GET['cadastro'])){
                                         <i class="zmdi zmdi-plus"></i>Adicionar uma tarefa</button>
                                     <button class="au-btn au-btn-icon au-btn--blue au-btn--small" id="filtrar-usuario">
                                         <i class="zmdi zmdi-eye"></i>Visualizar outros kanbans</button>';    
-                                }else{
+                                }else if($nivelSession == 1 && isset($_GET['id']) && $_GET['id'] !== $userSession){
                                     echo '<button class="au-btn au-btn-icon au-btn--blue au-btn--small" id="filtrar-usuario">
                                     <i class="zmdi zmdi-eye"></i>Visualizar outros kanbans</button>';
                                     echo '<button class="au-btn au-btn-icon au-btn--blue2 au-btn--small" id="voltar-kanban">
@@ -168,12 +166,9 @@ if(isset($_GET['cadastro'])){
 
 
 <script src='js/index.global.js'></script>
-<!-- <script src="vendor/jquery-3.2.1.min.js"></script> -->
-
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
-<script src="vendor/bootstrap-4.1/popper.min.js"></script>
-<script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+<script src="vendor/bootstrap/popper.min.js"></script>
+<script src="vendor/bootstrap/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>

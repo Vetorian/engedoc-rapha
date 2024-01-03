@@ -17,7 +17,7 @@
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->
-    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet" media="all">
 
     <!-- Vendor CSS-->
     <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
@@ -27,6 +27,7 @@
     <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
     <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.2.1/hamburgers.min.css">
 
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
@@ -98,77 +99,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <!-- <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c3">
-                                    <a href="estoque">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-storage"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>Estoque</h2>
-                                                <span>produtos no estoque</span>
-                                            </div>
-                                        </div>
-                                        <div class="overview-chart">
-                                            
-                                        </div>
-                                    </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c4">
-                                    <a href="retirada">
-                                        <div class="overview__inner">
-                                            <div class="overview-box clearfix">
-                                                <div class="icon">
-                                                    <i class="zmdi zmdi-account-o"></i>
-                                                </div>
-                                                <div class="text">
-                                                    <h2>Retirada</h2>
-                                                    <span>retiradas do estoque</span>
-                                                </div>
-                                            </div>
-                                            <div class="overview-chart">
-                                                
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div> -->
                         </div>
-                        <?php /*<div class="row">
-                            <div class="col-lg-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <a href="categorias"<button type="button" class="btn btn-outline-primary btn-lg btn-block">Categorias</button></a>
-                                        <a href="solicitantes"<button type="button" class="btn btn-outline-primary btn-lg btn-block">Solicitantes</button></a>
-                                        <a href="fornecedores"<button type="button" class="btn btn-outline-primary btn-lg btn-block">Fornecedores</button></a>
-                                        <a href="pagamento" <button type="button" class="btn btn-outline-primary btn-lg btn-block">Formas de pagamento</button></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <div class="col-lg-6">
-                                <div class="overview-item overview-item--c5">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-chart"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>Gráficos EM BREVE</h2>
-                                                <span>visualize os gráficos</span>
-                                            </div>
-                                        </div>
-                                        <div class="overview-chart">
-                                                
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-                        </div>*/?>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
@@ -188,8 +119,8 @@
     <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
-    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <script src="vendor/bootstrap/popper.min.js"></script>
+    <script src="vendor/bootstrap/bootstrap.min.js"></script>
     <!-- Vendor JS       -->
     <script src="vendor/slick/slick.min.js">
     </script>

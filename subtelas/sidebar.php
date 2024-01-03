@@ -11,94 +11,15 @@
                             <a class="js-arrow" href="index">
                                 <i class="fas fa-globe"></i>Tela inicial</a>
                         </li>
-                        <li class="compras">
-                            <a href="compras">
-                                <i class="fas fa-shopping-bag"></i> Compras
+                        <li class="calendario">
+                            <a href="calendario">
+                                <i class="zmdi zmdi-calendar"></i> Calendario
                             </a>
                         </li>
-                        <li class="categorias">
-                            <a href="categorias">
-                                <i class="fas fa-folder"></i>Categorias</a>
+                        <li class="kanban">
+                            <a href="kanban">
+                                <i class="zmdi zmdi-receipt"></i>Kanban</a>
                         </li>
-        
-                        <!-- <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-desktop"></i>UI Elements</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="htmls/button.html">Button</a>
-                                </li>
-                                <li>
-                                    <a href="htmls/badge.html">Badges</a>
-                                </li>
-                                <li>
-                                    <a href="htmls/tab.html">Tabs</a>
-                                </li>
-                                <li>
-                                    <a href="htmls/card.html">Cards</a>
-                                </li>
-                                <li>
-                                    <a href="htmls/alert.html">Alerts</a>
-                                </li>
-                                <li>
-                                    <a href="htmls/progress-bar.html">Progress Bars</a>
-                                </li>
-                                <li>
-                                    <a href="htmls/modal.html">Modals</a>
-                                </li>
-                                <li>
-                                    <a href="htmls/switch.html">Switchs</a>
-                                </li>
-                                <li>
-                                    <a href="htmls/grid.html">Grids</a>
-                                </li>
-                                <li>
-                                    <a href="htmls/fontawesome.html">Fontawesome Icon</a>
-                                </li>
-                                <li>
-                                    <a href="htmls/typo.html">Typography</a>
-                                </li>
-                                <li class="has-sub">
-                                    <a class="js-arrow" href="#">Pages</a>
-                                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                        <li>
-                                            <a href="htmls/login.html">Login</a>
-                                        </li>
-                                        <li>
-                                            <a href="htmls/register.html">Register</a>
-                                        </li>
-                                        <li>
-                                            <a href="htmls/forget-pass.html">Forget Password</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="has-sub">
-                                    <a class="js-arrow" href="#">Outros</a>
-                                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                        <li>
-                                            <a href="htmls/chart.html">
-                                                <i class="fas fa-chart-bar"></i>Charts</a>
-                                        </li>
-                                        <li>
-                                            <a href="htmls/table.html">
-                                                <i class="fas fa-table"></i>Tables</a>
-                                        </li>
-                                        <li>
-                                            <a href="htmls/form.html">
-                                                <i class="far fa-check-square"></i>Forms</a>
-                                        </li>
-                                        <li>
-                                            <a href="htmls/calendar.html">
-                                                <i class="fas fa-calendar-alt"></i>Calendar</a>
-                                        </li>
-                                        <li>
-                                            <a href="htmls/map.html">
-                                                <i class="fas fa-map-marker-alt"></i>Maps</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li> -->
                     </ul>
                 </nav>
             </div>
@@ -108,16 +29,16 @@
         <script>
             var currentPath = window.location.pathname;
             var liIndex = document.getElementsByClassName('index')[0];
-            var liCategorias = document.getElementsByClassName('categorias')[0];
-            var liCompras = document.getElementsByClassName('compras')[0];
+            var liCalendario = document.getElementsByClassName('calendario')[0];
+            var liKanban = document.getElementsByClassName('kanban')[0];
 
             // console.log(currentPath);
             
             if(currentPath === '/engedoc_rapha/index' || currentPath === '/engedoc_rapha/index.php' || currentPath === '/engedoc_rapha/'){
                 liIndex.classList.add('active');
-            }else if(currentPath === '/engedoc_rapha/categorias' || currentPath === '/engedoc_rapha/categorias.php' ){
-                liCategorias.classList.add('active');
-            }else if(currentPath === '/engedoc_rapha/compras' || currentPath === '/engedoc_rapha/compras.php'){
-                liCompras.classList.add('active');
+            }else if(currentPath === '/engedoc_rapha/calendario' || currentPath === '/engedoc_rapha/calendario.php' ){
+                liCalendario.classList.add('active');
+            }else if(currentPath === '/engedoc_rapha/kanban' || currentPath === '/engedoc_rapha/kanban.php'){
+                liKanban.classList.add('active');
             }
         </script>

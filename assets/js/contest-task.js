@@ -22,9 +22,11 @@ $(document).ready(function(){
             $("#message").removeClass("piscar-vermelho");
         }
         
+        var url = 'contest_task.php';
+        console.log(url);
         $.ajax({
             method: "POST",
-            url: "src/contest_task.php",
+            url: url,
             data: new FormData(this),
             contentType: false,
             processData: false,
@@ -65,7 +67,7 @@ $(document).ready(function(){
                         }
                     }).then((result) => {
                         if (result.dismiss === Swal.DismissReason.timer) {
-                            window.location.href = "http://192.168.0.122/jkanban/";
+                            window.location.href = "http://192.168.0.122/engedoc_rapha/kanban";
                         }
                     });
                 }else if(json.erro == true){

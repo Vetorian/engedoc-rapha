@@ -13,7 +13,7 @@ function retornaErro($msg){
 
 function curlEmail($task_id, $user, $msg){
     
-    require 'conexao.php';
+    require '../../conexao.php';
 
     $array = array(
         'tarefa_id' => $task_id,
@@ -23,7 +23,7 @@ function curlEmail($task_id, $user, $msg){
 
     $curl = curl_init();
     curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://127.0.0.1/jkanban/src/email_recusado.php',
+        CURLOPT_URL => 'http://127.0.0.1/engedoc_rapha/funcoes/kanban/email_recusado.php',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_CUSTOMREQUEST => 'POST',
         CURLOPT_POSTFIELDS => json_encode($array),
@@ -53,7 +53,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $sql = "SELECT * from tarefas_todo where tarefa_id =  $tarefa_id";
         $query = mysqli_query($conexao, $sql);
         if(mysqli_num_rows($query) > 0){
-            $sql = "SELECT * from logs where task_id = $tarefa_id";
+            $sql = "SELECT * from logs_kanban where task_id = $tarefa_id";
             $query = mysqli_query($conexao, $sql);
 
             if(mysqli_num_rows($query) > 1){

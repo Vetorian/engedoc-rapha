@@ -7,7 +7,7 @@ date_default_timezone_set('America/Sao_Paulo');
 function logDragging($user, $task, $target, $source ){
     require '../../conexao.php';
 
-    $sql = "INSERT INTO logs(usuario_id, task_id, target, source) values('$user', '$task','$target','$source')";
+    $sql = "INSERT INTO logs_kanban(usuario_id, task_id, target, source) values('$user', '$task','$target','$source')";
     mysqli_query($conexao, $sql);
     
 }
@@ -46,7 +46,7 @@ function curlEmail($task_id){
 
     $curl = curl_init();
     curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://127.0.0.1/jkanban/src/email_cadastro.php',
+        CURLOPT_URL => 'http://127.0.0.1/engedoc_rapha/funcoes/kanban/email_cadastro.php',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_CUSTOMREQUEST => 'POST',
         CURLOPT_POSTFIELDS => json_encode($arrayPost),

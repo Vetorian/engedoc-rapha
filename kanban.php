@@ -53,7 +53,7 @@ if(isset($_GET['cadastro'])){
     iframe{ 
         height:250px;
         border: none;
-    } 
+    }
 
     a {
         text-decoration: none;
@@ -93,23 +93,36 @@ if(isset($_GET['cadastro'])){
                                 }
                                 ?>
                             </div>
-
+                            
                             <div class="col-sm-3">
                                 <?php 
                                 if($nivelSession == 1 && isset($_GET['id']) && $_GET['id'] === $userSession){
-                                    echo '<button class="au-btn au-btn-icon au-btn--green au-btn--small" id="adicionar-tarefa">
-                                        <i class="zmdi zmdi-plus"></i>Adicionar uma tarefa</button>
-                                    <button class="au-btn au-btn-icon au-btn--blue au-btn--small" id="filtrar-usuario">
-                                        <i class="zmdi zmdi-eye"></i>Visualizar outros kanbans</button>';    
+                                    echo "<iframe scrolling='yes' src='funcoes/kanban/iframe.php?id=$userSession'></iframe>";
                                 }else if($nivelSession == 1 && isset($_GET['id']) && $_GET['id'] !== $userSession){
-                                    echo '<button class="au-btn au-btn-icon au-btn--blue au-btn--small" id="filtrar-usuario">
-                                    <i class="zmdi zmdi-eye"></i>Visualizar outros kanbans</button>';
-                                    echo '<button class="au-btn au-btn-icon au-btn--blue2 au-btn--small" id="voltar-kanban">
-                                    <i class="zmdi zmdi-home"></i>Voltar para meu kanban</button>';
+                                    $idget_user = $_GET['id'];
+                                    echo "<iframe scrolling='yes' src='funcoes/kanban/iframe.php?id=$idget_user'></iframe>";
                                 }
-                                ?>    
+                                ?>
+                                <br><br><br><br>
+                                <div style="padding-left:5%">
+                                    <?php 
+                                    if($nivelSession == 1 && isset($_GET['id']) && $_GET['id'] === $userSession){
+                                        echo '<button class="au-btn au-btn-icon au-btn--green au-btn--small" id="adicionar-tarefa">
+                                            <i class="zmdi zmdi-plus"></i>Adicionar uma tarefa</button>
+                                        <button class="au-btn au-btn-icon au-btn--blue au-btn--small" id="filtrar-usuario">
+                                            <i class="zmdi zmdi-eye"></i>Visualizar outros kanbans</button>';
+                                    }else if($nivelSession == 1 && isset($_GET['id']) && $_GET['id'] !== $userSession){
+                                        echo '<button class="au-btn au-btn-icon au-btn--blue au-btn--small" id="filtrar-usuario">
+                                        <i class="zmdi zmdi-eye"></i>Visualizar outros kanbans</button>';
+                                        echo '<button class="au-btn au-btn-icon au-btn--blue2 au-btn--small" id="voltar-kanban">
+                                        <i class="zmdi zmdi-home"></i>Voltar para meu kanban</button>';
+                                    }
+                                    ?>
+                                </div>
+
+
                             </div>
-                            
+                        
                         </div>
                         
                         </div>

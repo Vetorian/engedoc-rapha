@@ -1,6 +1,5 @@
 <?php require '../../conexao.php';?>
 
-<script src="assets/js/register-task-step.js"></script>
 <div class="card">
     <div class="card-header">
         Cadastro de Tarefa
@@ -185,6 +184,6 @@ $(document).ready(function(){
 
     
 });
-
-
 </script>
+
+<script src="assets/js/register-task-step.js"></script>

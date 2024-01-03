@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 
 function buscaHorarioCreate($task_id){
     require '../../conexao.php';
-    $sql = "SELECT * from logs where task_id = $task_id and source = 'create' order by id desc limit 1";
+    $sql = "SELECT * from logs_kanban where task_id = $task_id and source = 'create' order by id desc limit 1";
     $query = mysqli_query($conexao, $sql);
     $array = mysqli_fetch_array($query);
 
@@ -18,7 +18,7 @@ function buscaHorarioCreate($task_id){
 
 function buscaHorarioProgress($task_id){
     require '../../conexao.php';
-    $sql = "SELECT * from logs where task_id = $task_id and source = 'tarefas_todo' order by id desc limit 1";
+    $sql = "SELECT * from logs_kanban where task_id = $task_id and source = 'tarefas_todo' order by id desc limit 1";
     $query = mysqli_query($conexao, $sql);
     $array = mysqli_fetch_array($query);
 
@@ -37,10 +37,10 @@ function buscaNomeTarefa($task_id){
     return "$titulo - PTC: $ptc_num";
 }
 
-function buscaUsuario($usuario){
+function buscaUsuario($param){
     require '../../conexao.php';
 
-    $sql = "SELECT * from usuarios where id = $usuario";
+    $sql = "SELECT * from usuario where id = $param";
     $query = mysqli_query($conexao, $sql);
     $array = mysqli_fetch_array($query);
 
@@ -76,7 +76,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $mail->Port = $portsmtp;
     $mail->SMTPOptions = $smtpoptions;
 
-    $sql = "SELECT * from usuarios where id = $json->criador";
+    $sql = "SELECT * from usuario where id = $json->criador";
     $query = mysqli_query($conexao, $sql);
     $result = mysqli_fetch_assoc($query);
 
@@ -104,7 +104,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     $horario_cadastro = $horario_cadastro->format('d/m/Y H:i:s');
     $horario_inicio = $horario_inicio->format('d/m/Y H:i:s');
-
 
     $arrayHtml = array(
         "%user%" => buscaUsuario($json->usuario),

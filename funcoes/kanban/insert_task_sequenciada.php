@@ -7,7 +7,7 @@ date_default_timezone_set('America/Sao_Paulo');
 function logDragging($user, $task, $target, $source ){
     require '../../conexao.php';
 
-    $sql = "INSERT INTO logs(usuario_id, task_id, target, source) values('$user', '$task','$target','$source')";
+    $sql = "INSERT INTO logs_kanban(usuario_id, task_id, target, source) values('$user', '$task','$target','$source')";
     mysqli_query($conexao, $sql);
     
 }
@@ -18,6 +18,17 @@ function validaData($data_post){
         echo json_encode(array(
             'erro' => true,
             'msg' => 'Data da tarefa não pode ser anterior a data atual!'
+        ));
+        exit();
+    }
+}
+
+function validaDataNome($data_post, $tarefa){
+    $dataAtual = date('Y-m-d H:i:s');
+    if($dataAtual > $data_post){
+        echo json_encode(array(
+            'erro' => true,
+            'msg' => "Data da tarefa $tarefa não pode ser anterior a data atual!"
         ));
         exit();
     }
@@ -62,6 +73,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $dataHora = $_POST["data_entrega-$count"] . ' '. $_POST["tempo_entrega-$count"];
                 $titulo = $_POST["tarefa-$count"];
                 $prioridade = $_POST["prioridade-$count"];
+                
+                validaDataNome($dataHora, $titulo);
+
+                if($dataHora < $data){
+                    echo json_encode(array(
+                        'erro' => true,
+                        'msg' => "Data da tarefa $titulo não pode ser menor que a tarefa anterior..."
+                    ));
+                    exit();
+                }
 
                 // echo $count . ' - '. $_POST["usuarios-$count"] ;
                 

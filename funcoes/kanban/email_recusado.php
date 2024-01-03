@@ -1,11 +1,12 @@
 <?php 
 
-require '../vendor/autoload.php';
+require '../../vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-    require 'chaves.php'; require 'conexao.php';
+    require 'chaves.php'; 
+    require '../../conexao.php';
 
     $client_data = file_get_contents("php://input");
     $json = json_decode($client_data);
@@ -16,13 +17,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $user = $json->user;
     $msg = $json->msg;
 
-    $sql = "select * from usuarios where id = $user limit 1";
+    $sql = "SELECT * from usuario where id = $user limit 1";
     $query = mysqli_query($conexao, $sql);
     $array = mysqli_fetch_array($query);
     
     $nome_usuario = $array['nome'] . ' ' . $array['sobrenome'];
 
-    $sql2 = "select * from tarefas_criadas where tarefa_id = $tarefa_id limit 1";
+    $sql2 = "SELECT * from tarefas_criadas where tarefa_id = $tarefa_id limit 1";
     $query2 = mysqli_query($conexao, $sql2);
     $array2 = mysqli_fetch_array($query2);
     
@@ -30,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $ptc_tarefa = $array2['ptc_num'];
     $criador_tarefa = $array2['criado_por'];
 
-    $sql3 = "select email from usuarios where id = $criador_tarefa limit 1 ";
+    $sql3 = "SELECT email from usuario where id = $criador_tarefa limit 1 ";
     $query3 = mysqli_query($conexao, $sql3);
     $array3 = mysqli_fetch_array($query3);
     $email = $array3['email'];

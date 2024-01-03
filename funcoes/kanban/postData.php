@@ -68,7 +68,7 @@ function curlEmail($task,$created_by, $user ){
     ));
 
     $ch = curl_exec($curl);
-    // echo $ch;
+    echo $ch;
     curl_close($curl);
 
 }
@@ -77,7 +77,7 @@ function curlEmail($task,$created_by, $user ){
 function logDragging($user, $task, $target, $source ){
     require '../../conexao.php';
 
-    $sql = "INSERT INTO logs(usuario_id, task_id, target, source) values('$user', '$task','$target','$source')";
+    $sql = "INSERT INTO logs_kanban(usuario_id, task_id, target, source) values('$user', '$task','$target','$source')";
     mysqli_query($conexao, $sql);
     
 }
@@ -181,6 +181,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
                                 file_put_contents($jsonRef, json_encode($next_task));
                                 unlink($jsonRef);
+
+                                $sql = "UPDATE tarefas_criadas set json_ref = null where tarefa_id = '$last_inserted_id'"; // COLOCAR NULO
+                                $query = mysqli_query($conexao, $sql); // RODA A QUERY
+
                             }else{ // caso nao for, reindexar o array
                                 $tasks = array_values($next_task);
                                 // // print_r($tasks); 

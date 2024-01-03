@@ -9,7 +9,7 @@ use PHPMailer\PHPMailer\Exception;
 function buscaNomeCriador($id){
     require '../../conexao.php';
 
-    $sql = "SELECT * from usuarios where id = $id";
+    $sql = "SELECT * from usuario where id = $id";
     $query = mysqli_query($conexao, $sql);
     $array = mysqli_fetch_array($query);
 
@@ -18,7 +18,7 @@ function buscaNomeCriador($id){
 }
 
 function buscaPrioridade($id){
-    require 'conexao.php';
+    require '../../conexao.php';
     
     $sql = "SELECT * from prioridade where id = $id";
     $query = mysqli_query($conexao, $sql);
@@ -67,7 +67,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $mail->Port = $portsmtp;
     $mail->SMTPOptions = $smtpoptions;
 
-    $sql = "SELECT * from usuarios where id = $usuario";
+    $sql = "SELECT * from usuario where id = $usuario";
     $query = mysqli_query($conexao, $sql);
     $result = mysqli_fetch_assoc($query);
 
@@ -105,7 +105,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         "%criador%" => $criador,
         "%data_criada%" => $horario_cadastro,
         "%data_final%" => $horario_final,
-        "%link%" => '192.168.0.122/jkanban/tarefa.php?id=' . $tarefa_id,
+        "%link%" => '192.168.0.122/engedoc_rapha/funcoes/kanban/tarefa.php?id=' . $tarefa_id,
     );
 
     $mail->Body = strtr($body,$arrayHtml);

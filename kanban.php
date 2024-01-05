@@ -65,6 +65,10 @@ if(isset($_GET['cadastro'])){
     .formedit{
         display: none;
     }
+
+    .info {
+        background: white;
+    }
 </style>
 
 

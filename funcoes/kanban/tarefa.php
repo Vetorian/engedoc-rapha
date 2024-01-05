@@ -3,7 +3,7 @@ require '../../conexao.php';
 require '../../get_dados.php';
 
 function LocationIndex(){
-	header('Location: http://192.168.0.122/engedoc_rapha/kanban');
+	header('Location: http://192.168.0.124/engedoc_rapha/kanban');
 }
 
 function getId(){

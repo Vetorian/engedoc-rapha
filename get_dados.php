@@ -3,7 +3,7 @@ session_start();
 include_once 'conexao.php';
 
 if ($_SESSION["usuario"] == "" || $_SESSION["usuario"] == null) {
-    header("Location: http://192.168.0.122/engedoc_rapha/login.php");
+    header("Location: http://192.168.0.124/engedoc_rapha/login.php");
 }
 $userSession = $_SESSION["usuario"];
 $sql = "SELECT * FROM usuario WHERE id = $userSession  AND status = 1";

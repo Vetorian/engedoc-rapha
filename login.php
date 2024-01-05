@@ -12,7 +12,7 @@ if (isset($_COOKIE['auth_token'])) {
         if($auth_token === $_COOKIE['auth_token']){
             session_start();
             $_SESSION['usuario'] = $array['id'];
-            header("Location: https://192.168.0.122/engedoc_rapha/");
+            header("Location: https://192.168.0.124/engedoc_rapha/");
             die();
         }
     }
@@ -85,7 +85,7 @@ if (isset($_COOKIE['auth_token'])) {
                     })
                 }
                 else if(resposta.erro == false) {
-                    window.location.href = "http://192.168.0.122/engedoc_rapha/"
+                    window.location.href = "http://192.168.0.124/engedoc_rapha/"
                 }
             }
         })

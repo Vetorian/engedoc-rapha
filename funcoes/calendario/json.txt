@@ -1,1 +1,1 @@
-{"title":"sadsada","start":"2023-12-29","start-time":"11:36","end":"2023-12-29","end-time":"12:36","formato_cad":"#1A3B5C","produto":"ST340UR","link":"","recorrenteTipo":"semanalmente","recorrenteSemanas":"","recorrenteMeses":""}
+{"title":"TESTE","start":"2024-01-30","start-time":"15:34","end":"2024-01-30","end-time":"16:34","formato_cad":"#1A3B5C","produto":"ST340UR","link":"","recorrenteTipo":"semanalmente","recorrenteSemanas":"","recorrenteMeses":"","current_select":["admin"]}

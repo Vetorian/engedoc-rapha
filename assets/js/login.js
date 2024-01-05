@@ -24,7 +24,7 @@ $("#login").on("submit", function (event) {
                 })
             }
             else if(resposta.erro == false) {
-                window.location.href = "http://192.168.0.122/jkanban/"
+                window.location.href = "http://192.168.0.124/jkanban/"
             }
         }
     })

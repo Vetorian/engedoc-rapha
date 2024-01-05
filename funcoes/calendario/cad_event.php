@@ -573,7 +573,7 @@ if(isset($_POST['current_select']) && $_POST['title'] != null){
                     $email = $array['email'];
                 }
 
-                $url =  "192.168.0.122/engedoc_rapha/funcoes/calendario/email.php";
+                $url =  "192.168.0.124/engedoc_rapha/funcoes/calendario/email.php";
                 $ch = curl_init($url);
 
                 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); // needed to disable SSL checks for this site
@@ -590,7 +590,7 @@ if(isset($_POST['current_select']) && $_POST['title'] != null){
                 $data = "titulo=$titulo&email=$email&formato=$formato&nome=$user";
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
                 $output = curl_exec($ch);
-                echo $output;
+                // echo $output;
                 curl_close($ch);
             }
         }

@@ -80,10 +80,6 @@ $(document).ready(function(){
       })
     });
 
-    $('#calendario').on("click", function(){
-        window.location.href = "https://engedoc.com.br/calendario";
-    });
-
     $('#adicionar-tarefa').on("click", function(){
         window.location.href = "kanban?cadastro";
     });
@@ -467,7 +463,7 @@ $(document).ready(function(){
             {
               id: "tarefas_todo",
               title: "Pendencias",
-              class: "info,good",
+              class: "good",
               dragTo: ["tarefas_process"],
               item: pendenciasData
             },

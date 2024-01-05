@@ -26,7 +26,7 @@
 	<link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
 	<link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
     <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
-	<link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+	<link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet" media="all">
     <link href="css/theme.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="assets/css/personalizado.css">
     <link href="assets/css/calendario.css" rel="stylesheet" media="all">
@@ -402,8 +402,8 @@
     
 	<!-- <script src="vendor/jquery-3.2.1.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
-	<script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <script src="vendor/bootstrap/popper.min.js"></script>
+	<script src="vendor/bootstrap/bootstrap.min.js"></script>
 	<script src="vendor/select2/select2.min.js"></script>
 	<script src="vendor/animsition/animsition.min.js"></script>
 	<script src="js/main.js"></script>

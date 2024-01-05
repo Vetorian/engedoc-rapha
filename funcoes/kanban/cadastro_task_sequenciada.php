@@ -14,14 +14,14 @@
                     <div class="form-group">
                         <label for="tarefa" class="control-label mb-1">Titulo da Tarefa</label>
                         <input id="tarefa" name="tarefa" class="form-control" 
-                        type="text" aria-required="true" aria-invalid="false" placeholder="Tarefa" maxlength="18" required>
+                        type="text" aria-required="true" aria-invalid="false" placeholder="Tarefa" maxlength="25" required>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="form-group">
                         <label for="ptc" class="control-label mb-1">Identificador do PTC</label>
                         <input id="ptc" name="ptc" class="form-control"
-                        type="text" aria-required="true" aria-invalid="false" placeholder="PTC" required maxlength="18">
+                        type="text" aria-required="true" aria-invalid="false" placeholder="PTC" required maxlength="25">
                     </div>
                 </div>
             </div>
